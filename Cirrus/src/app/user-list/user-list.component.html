@@ -1,0 +1,10 @@
+
+<div id="userlist-form" class="form-control">
+  <h1 class="h3 mb-3 font-weight-normal">User List</h1>
+ 
+  <label for="user-list" class="sr-only">Username</label>
+  <label #userlist id="user-list" type="text" class="form-control"  *ngFor="let user of users">{{ user }}</label>
+  <br>
+
+  <p class="mt-5 mb-3 text-muted">&copy;  Cirrus 2019</p>
+</div>

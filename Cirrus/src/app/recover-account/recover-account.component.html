@@ -1,0 +1,24 @@
+
+<div id ="recover-form" class="form-control">
+  <h1 class="h3 mb-3 font-weight-normal">Recover your account</h1>
+ 
+  <label for="recover-username" class="sr-only">Username</label>
+  <input #username id="recover-username" type="text" class="form-control" placeholder="Username" required autofocus>
+  
+  <label for="security-question" class="sr-only">Security question:</label>
+    
+  <label #security for="security-question" type="text" class="sr-only" placeholder="security-question" >Question:</label>
+    <!-- this option will be retived from DB using javascript -->
+    <label id="security-question" *ngFor="let question of questions">{{ question }}</label>
+    
+    <label for="answer" class="sr-only">Answer:</label>
+    <input #answer id="answer" type="text" class="form-control" placeholder="Answer" required autofocus>
+  
+  <button class="btn btn-lg btn-primary btn-block" (click)="recoverAccount(username.value, answer.value)">Submit</button>
+  <br>
+
+  <div *ngIf="credentialsInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+      Invalid Credentials!
+  </div>
+  <p class="mt-5 mb-3 text-muted">&copy; Revature 2017-2019</p>
+</div>
