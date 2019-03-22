@@ -83,6 +83,9 @@ RemoteSystemsTempFiles/
 .scala_dependencies 
 .worksheet 
 
+# target folder
+target/
+
 # .properties files
 *.properties
 
