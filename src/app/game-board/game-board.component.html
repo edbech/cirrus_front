@@ -1,0 +1,38 @@
+<p>
+  game-board works!
+</p>
+
+
+<div class="row top-row">
+    <div class="col left-col" (click)="play(0)">
+      <span>0{{board[0]}}</span>
+    </div>
+    <div class="col middle-col" (click)="play(1)">
+      <span>1{{board[1]}}</span>
+    </div>
+    <div class="col right-col" (click)="play(2)">
+      <span>2{{board[2]}}</span>
+    </div>
+  </div>
+  <div class="row middle-row">
+    <div class="col left-col" (click)="play(3)">
+      <span>3{{board[3]}}</span>
+    </div>
+    <div class="col middle-col" (click)="play(4)">
+      <span>4{{board[4]}}</span>
+    </div>
+    <div class="col right-col" (click)="play(5)">
+      <span>5{{board[5]}}</span>
+    </div>
+  </div>
+  <div class="row bottom-row">
+    <div class="col left-col" (click)="play(6)">
+      <span>6{{board[6]}}</span>
+    </div>
+    <div class="col middle-col" (click)="play(7)">
+      <span>7{{board[7]}}</span>
+    </div>
+    <div class="col right-col" (click)="play(8)">
+      <span>8{{board[8]}}</span>
+    </div>
+  </div>

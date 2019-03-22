@@ -1,0 +1,29 @@
+<form [formGroup]="recovery-form" (ngSubmit)="recover()">
+    <div class="form-group">
+        <br/>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ngModel name="username" type="text" name="username" class="form-control" formControlName = "username" />
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input ngModel name ="password" type="password" name="password" class="form-control" formControlName = "password" />
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            <label for="password">About-Me description</label>
+            <textarea type="text" name="description" class="form-control" rows="4" cols="50" formControlName = "aboutMe" ></textarea>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <button class="btn btn-primary" (click)="register(firstname.value, lastname.value, username.value, password.value, description.value)">Register</button>
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+
+    </div>
+</form>
