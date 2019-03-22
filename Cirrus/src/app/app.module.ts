@@ -9,9 +9,11 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const ROUTES = [
+  { path: '', component: AppComponent },
   { path: 'recover-account', component: RecoverAccountComponent },
   { path: 'user-list', component: UserListComponent },
-  { path: 'user-profile', component: UserProfileComponent }
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'reset-password', component: ResetPasswordComponent }
 ];
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ const ROUTES = [
     BrowserModule
     
   ],
-  providers: [],
+  providers: [
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

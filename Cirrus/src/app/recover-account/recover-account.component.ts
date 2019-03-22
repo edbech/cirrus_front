@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-recover-account',
+  selector: 'recover-account',
   templateUrl: './recover-account.component.html',
   styleUrls: ['./recover-account.component.css']
 })
