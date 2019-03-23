@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -7,15 +8,13 @@ import { User } from '../models/users';
 import { environment as env } from '../../environments/environment';
 import { Credentials } from '../models/credentials';
 
-
-
-
 @Injectable()
 export class AuthService {
 
   private options = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
+
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -31,6 +30,7 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+
   get isAuth() {
     return this._isAuth.getValue();
   }
@@ -38,8 +38,6 @@ export class AuthService {
   set isAuth(value: boolean) {
     this._isAuth.next(value);
   }
-
-
   
 //this.options.headers
   login(credentials: Credentials) {
@@ -71,10 +69,7 @@ export class AuthService {
     this.isAuth = false;
   }
 
-  hasToken(): boolean {
+  private hasToken(): boolean {
     return !!localStorage.getItem('rbs-jwt');
   }
-
-  
-
 }

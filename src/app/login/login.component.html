@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-
         <h2>Login</h2>
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
@@ -15,6 +14,7 @@
 
 
           <button [disabled]="loading" class="btn btn-primary">Login</button>
+
           <a routerLink="/register" class="btn btn-link">Register</a>
 
           <div *ngIf="credentialsInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">

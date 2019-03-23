@@ -20,6 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { CellComponent } from './cell/cell.component';
 //import { RecoverAccountComponent } from './recover-account/recover-account.component';
+import { RecoverAccountComponent } from './recover-account/recover-account.component';
+
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { CellComponent } from './cell/cell.component';
     GameBoardComponent,
     //RecoverAccountComponent,
     CellComponent,
-  
+    RecoverAccountComponent
     
   ],
   imports: [

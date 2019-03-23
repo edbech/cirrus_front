@@ -5,7 +5,6 @@ import { first } from 'rxjs/operators';
 
 import { UserService } from '../services/user.service';
 
-
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -15,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
- 
+  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -26,10 +25,12 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
+
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
       //aboutMe: ['', Validators.required],
+
     });
   }
   get f() {
@@ -38,12 +39,10 @@ export class RegistrationComponent implements OnInit {
     return userValues;
   }
 
-
-
-
   onRegister() {
 
     console.log(this.registerForm.controls);
+
 
     this.userService.register(this.registerForm.value)
       .pipe(first())
@@ -55,10 +54,5 @@ export class RegistrationComponent implements OnInit {
           console.log('Registration unsuccessful')
         }
       )
-
-
   }
-
 }
-
-
