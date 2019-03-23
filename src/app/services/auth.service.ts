@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -7,9 +8,13 @@ import { User } from '../models/users';
 import { environment as env } from '../../environments/environment';
 import { Credentials } from '../models/credentials';
 
-
 @Injectable()
 export class AuthService {
+
+  private options = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -17,9 +22,14 @@ export class AuthService {
   readonly isAuth$ = this._isAuth.asObservable();
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
+  //get current user
+  public get currentUserValue():User{
+    return this.currentUserSubject.value;
+  }
+
 
   get isAuth() {
     return this._isAuth.getValue();
@@ -28,33 +38,38 @@ export class AuthService {
   set isAuth(value: boolean) {
     this._isAuth.next(value);
   }
-
-
+  
+//this.options.headers
   login(credentials: Credentials) {
 
-    //username: string, password: string
     let credentialsJson = JSON.stringify(credentials);
-
-    this.http.post(env.API_URL + 'auth', credentialsJson, { observe: 'response' })
-      .pipe(map(resp => {
-        localStorage.setItem('rbs-jwt', resp.headers.get('Authorization'));
-        localStorage.setItem('rbs-user', JSON.stringify(resp.body));
+    console.log(credentialsJson);
+    let x = this.http.post(env.API_URL + '/users/auth', credentialsJson, this.options );
+    console.log(x);
+    
+      x.pipe(map(resp => {
+        console.log(typeof(resp));
+        //localStorage.setItem('rbs-jwt', this.headers.get('Authorization'));
+        localStorage.setItem('rbs-user', JSON.stringify(resp));
         this.isAuth = true;
-      })).subscribe();
-
+        console.log(this.isAuth)
+        console.log(localStorage.getItem('rbs-user'));
+        console.log(localStorage.getItem('rbs-jwt'));
+       
+         })).subscribe();
+         console.log(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
+     
   }
 
   logout() {
-    localStorage.removeItem('rbs-jwt');
-    localStorage.removeItem('rbs-user');
-    this.currentUser = null;
-
+    if(localStorage.getItem('rbs-user') || localStorage.getItem('rbs-jwt')) {
+      localStorage.removeItem('rbs-jwt');
+      localStorage.removeItem('rbs-user');
+    }
+    this.isAuth = false;
   }
 
   private hasToken(): boolean {
     return !!localStorage.getItem('rbs-jwt');
-
   }
-
-
 }

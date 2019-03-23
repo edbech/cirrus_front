@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 
+
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 //import { TokenInterceptor } from './token.interceptor';
@@ -17,7 +18,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
+import { CellComponent } from './cell/cell.component';
+//import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
+
 
 
 @NgModule({
@@ -29,6 +33,8 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
     NavbarComponent,
     DashboardComponent,
     GameBoardComponent,
+    //RecoverAccountComponent,
+    CellComponent,
     RecoverAccountComponent
     
   ],
@@ -53,7 +59,15 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
       {
         path: 'dashboard',
         component: DashboardComponent
-      }
+      },
+      {
+        path: 'game',
+        component: GameBoardComponent
+      },
+      // {
+      //   path: 'accountrecovery',
+      //   component: RecoverAccountComponent
+      // }
     ])
   ],
   providers: [

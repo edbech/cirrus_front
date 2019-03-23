@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+
 import { UserService } from '../services/user.service';
-import { User } from '../models/users';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-  user: User;
+  
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -25,12 +25,12 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      aboutMe: ['', Validators.required],
+      //aboutMe: ['', Validators.required],
+
     });
   }
   get f() {
@@ -39,10 +39,9 @@ export class RegistrationComponent implements OnInit {
     return userValues;
   }
 
+  onRegister() {
 
-
-
-  register() {
+    console.log(this.registerForm.controls);
 
 
     this.userService.register(this.registerForm.value)
@@ -52,13 +51,8 @@ export class RegistrationComponent implements OnInit {
       },
         error => {
           //add validation 
-          console.log('Registeration unsuccessful')
+          console.log('Registration unsuccessful')
         }
       )
-
-
   }
-
 }
-
-

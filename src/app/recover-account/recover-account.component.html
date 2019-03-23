@@ -1,29 +1,33 @@
-<form [formGroup]="recovery-form" (ngSubmit)="recover()">
-    <div class="form-group">
-        <br/>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input ngModel name="username" type="text" name="username" class="form-control" formControlName = "username" />
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input ngModel name ="password" type="password" name="password" class="form-control" formControlName = "password" />
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            <label for="password">About-Me description</label>
-            <textarea type="text" name="description" class="form-control" rows="4" cols="50" formControlName = "aboutMe" ></textarea>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+         
+            <h2>Account Recovery</h2>
 
-        <button class="btn btn-primary" (click)="register(firstname.value, lastname.value, username.value, password.value, description.value)">Register</button>
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
+            <h3>Please enter username</h3>
+            <form [formGroup]="recoverForm" (ngSubmit)="onRecover()">
+              
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                
+             </div>
+              <button [disabled]="loading" class="btn btn-primary">Request Recovery Account</button>
+            
+              <div *ngIf="credentialsInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+                Username does not exist
+              </div>
 
+              <br/>
+              <a routerLink="/register" class="btn btn-link">Register</a>
+              <a routerLink="/login" class="btn btn-link">Login</a>
+            </form>
+        </div>
+      </div>
     </div>
-</form>
+  </div>
+
