@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
     //display all current games in progress for user
   }
 
-
   private getAllUsers(){
     this.userService.getAll().subscribe(response =>{
       this.users = response;
