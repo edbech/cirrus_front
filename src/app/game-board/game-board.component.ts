@@ -3,7 +3,6 @@ import { GameService } from './../services/game.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './../models/users';
 
-
 @Component({
   selector: 'game-board',
   templateUrl: './game-board.component.html',
@@ -84,6 +83,4 @@ export class GameBoardComponent implements OnInit {
     //gameArray[index]
     //update game
   }
-
-
 }

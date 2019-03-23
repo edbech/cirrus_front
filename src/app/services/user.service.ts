@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpRequest } from '@angular/common/http';
 
-
 import { User } from '../models/users';
 import { environment as env } from '../../environments/environment';
 
@@ -33,4 +32,3 @@ export class UserService {
   }
 
 }
-
