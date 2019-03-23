@@ -5,6 +5,9 @@
   <label for="user-list" class="sr-only">Username</label>
   <label #userlist id="user-list" type="text" class="form-control"  *ngFor="let user of users">{{ user }}</label>
   <br>
-
+<!-- User Name-->
+<label for="user-name" class="sr-only">Username</label>
+<input  id="user-name" type="text" class="form-control"  [(ngModel)]="user.username" name="username" #password="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
+<br>
   <p class="mt-5 mb-3 text-muted">&copy;  Cirrus 2019</p>
 </div>

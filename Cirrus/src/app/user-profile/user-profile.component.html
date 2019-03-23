@@ -1,59 +1,7 @@
 <div id="userprofile-form" class="form-control">
   <h1 class="h3 mb-3 font-weight-normal">User Profile</h1>
   <br>
-<!-- User profile-->
-  <!-- User ID-->
-  <label for="user-id" class="sr-only">Id</label>
-  <label #userid id="user-id" type="text" class="form-control"  *ngFor="let user of users">{{ user.id }}</label>
-  <br>
-  <!-- User Score-->
-  <label for="user-score" class="sr-only">User score:</label>
-  <label #userscore id="user-score" type="text" class="form-control"  *ngFor="let user of users">{{ user.score }}</label>
-  <br>
 
-  <!-- User Name-->
-  <label for="user-name" class="sr-only">Username</label>
-  <input  id="user-name" type="text" class="form-control"  [(ngModel)]="user.username" name="username" #password="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
-  <!-- User Password-->
-  <label for="user-password" class="sr-only">Password:</label>
-  <input  id="user-password" type="password" class="form-control"  [(ngModel)]="user.password" name="password" #password="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
-  <!-- User Security Question-->
-  <label for="user-securityquestion" class="sr-only">Security question:</label>
-  <input  id="user-securityquestion" type="text" class="form-control"  [(ngModel)]="user.securityquestion" name="securityquestion" #securityquestion="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
-  <!-- User Security Answer-->
-  <label for="user-securityanswer" class="sr-only">Security answer:</label>
-  <input  id="user-securityanswer" type="text" class="form-control"  [(ngModel)]="user.securityanswer" name="securityanswer" #securityanswer="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
-  <!-- User Email-->
-  <label for="user-email" class="sr-only">Email:</label>
-  <input id="user-email" type="text" class="form-control"  [(ngModel)]="user.email" name="email" #email="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
-  <!-- User Aboutme-->
-  <label for="user-aboutme" class="sr-only">About me:</label>
-  <input id="user-aboutme" type="text" class="form-control"  [(ngModel)]="user.aboutme" name="aboutme" #aboutme="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
-  <br>
-
- <!-- User Avatar-->
- <label for="user-avatar" class="sr-only">Avatar:</label>
- <input id="user-avatar" type="text" class="form-control"  [(ngModel)]="user.avatar" name="avatar" #avatar="ngModel" [ngModelOptions]="{ updateOn: 'submit' }" required>
- <br>
-
-<!-- User Retired-->
-<label for="user-retired" class="sr-only">Retired:</label>
-<label #userretired id="user-retired" type="text" class="form-control"  *ngFor="let user of users">{{ user.retired }}</label>
-<br>
-
-<!-- Submit Button-->
-<button class="btn btn-lg btn-primary btn-block" (click)="updateProfile(userid.value, username.value, password.value, securityquestion.value, securityanswer.value, email.value, aboutme.value, avatar.value)">Submit</button>
-  <br>
 
   <p class="mt-5 mb-3 text-muted">&copy;  Cirrus 2019</p>
 </div>
