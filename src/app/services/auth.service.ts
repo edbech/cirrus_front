@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -22,14 +23,13 @@ export class AuthService {
   private readonly _isAuth = new BehaviorSubject(this.hasToken());
   readonly isAuth$ = this._isAuth.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  constructor(
+    private http: HttpClient,
+    private route: Router
+    ){
+   
   }
-  //get current user
-  public get currentUserValue():User{
-    return this.currentUserSubject.value;
-  }
+
 
   get isAuth() {
     return this._isAuth.getValue();
@@ -59,8 +59,15 @@ export class AuthService {
         console.log(localStorage.getItem('rbs-jwt'));
        
          })).subscribe();
+           //resp =>{
+          //  console.log(resp.headers.get('rbs-jwt'))
+         
+
+         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
+         console.log(this.currentUserSubject)
+         this.currentUser = this.currentUserSubject.asObservable();
          console.log(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
-     
+         console.log(this.currentUser);
   }
 
   logout() {
@@ -69,12 +76,16 @@ export class AuthService {
       localStorage.removeItem('rbs-user');
     }
     this.isAuth = false;
+    this.route.navigate(['dashboard']);
   }
 
-  hasToken(): boolean {
+ private hasToken(): boolean {
     return !!localStorage.getItem('rbs-jwt');
   }
 
-  
+  public get currentUserValue():User{
+    console.log("Inside ")
+    return this.currentUserSubject.value;
+  }
 
 }

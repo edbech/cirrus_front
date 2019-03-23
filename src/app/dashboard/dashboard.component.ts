@@ -14,7 +14,7 @@ import {User} from './../models/users';
 export class DashboardComponent implements OnInit {
   currentUser : User;
   gameService:GameService;
-  users:any[];
+  users: User[] = [];
   constructor(
     private authService: AuthService,
     private userService: UserService

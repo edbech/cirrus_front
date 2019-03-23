@@ -2,7 +2,7 @@
     dashboard works!
 </p>
 
-<h1>Hi {{currentUser.firstName}}!</h1>
+<!-- <h1>Hi {{currentUser.firstName}}!</h1>
 <li *ngIf="authService.hasToken()"><a (click)="authService.logout()">Logout</a></li>
 
 <h3>All registered users:</h3>
@@ -10,12 +10,15 @@
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
     </li>
-</ul>
+</ul> -->
 
 <navbar></navbar>
 <game-board></game-board>
 
 <h2 class="lead">New game</h2>
+
+<button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
+
 <!-- <form [fromGroup]="createNewBoard" class="form-horizontal" (ngsubmit)="createNewGame()">
 
     <div class="form-group">

@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +10,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
-//import { TokenInterceptor } from './token.interceptor';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -31,8 +32,8 @@ import { CellComponent } from './cell/cell.component';
     NavbarComponent,
     DashboardComponent,
     GameBoardComponent,
-    //RecoverAccountComponent,
     CellComponent,
+   // RecoverAccountComponent,
   
     
   ],
@@ -71,11 +72,11 @@ import { CellComponent } from './cell/cell.component';
   providers: [
     UserService,
     AuthService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   //useClass: TokenInterceptor,
-    //   // multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
 ],
   
   bootstrap: [AppComponent]
