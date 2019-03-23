@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
+
+  API_URL: 'http://cirrus-env.2badcammjm.us-east-1.elasticbeanstalk.com/'
+
   API_URL: 'http://cirrius_directory'
+
 };
 
 /*
