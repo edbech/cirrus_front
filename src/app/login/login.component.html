@@ -1,0 +1,31 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <label for="username">Username</label>
+          <input type="text" formControlName="username" class="form-control" />
+
+
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control" />
+
+
+          <button [disabled]="loading" class="btn btn-primary">Login</button>
+          <a routerLink="/register" class="btn btn-link">Register</a>
+
+          <div *ngIf="credentialsInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+            Invalid Credentials!
+          </div>
+          <br />
+          <a routerLink="/dashboard" class="btn btn-link">Test dashboard</a>
+          <a routerLink="/accountrecovery" class="btn btn-link">Forgot Password</a>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
