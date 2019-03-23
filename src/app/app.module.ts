@@ -31,6 +31,7 @@ import { CellComponent } from './cell/cell.component';
     NavbarComponent,
     DashboardComponent,
     GameBoardComponent,
+    //RecoverAccountComponent,
     CellComponent,
   
     
@@ -60,7 +61,7 @@ import { CellComponent } from './cell/cell.component';
       {
         path: 'game',
         component: GameBoardComponent
-      }
+      },
       // {
       //   path: 'accountrecovery',
       //   component: RecoverAccountComponent
