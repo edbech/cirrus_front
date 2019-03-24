@@ -1,17 +1,24 @@
-version: 0.2
-
+version: 0.1
+environment_variables:
+    plaintext:
+        S3_BUCKET: "cirrus-front"
+        BUILD_ENV: "prod"
 phases:
-  pre_build:
-    commands:
-      - echo Build started on `date`
-      - mvn install:install-file -Dfile=./src/main/resources/ojdbc7-12.1.0.2.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2 -Dpackaging=jar
-      - mvn test
-  build:
-    commands:
-      - echo Build completed on `date`
-      - mvn clean package
-      - mv target/cirrus-0.0.1-SNAPSHOT.war cirrus-0.0.1-SNAPSHOT.war
+    install:
+        commands:
+            - echo Installing source NPM dependencies...
+            - npm install
+            - npm install -g @angular/cli
+    build:
+        commands:
+            - echo Build started on `date`
+            - ng build --prod
+    post_build:
+         commands:
+            - aws s3 sync --delete dist s3://cirrus-front
+            - echo Build completed on `date`
 artifacts:
-  files:
-    - cirrus-0.0.1-SNAPSHOT.war
-    - .ebextensions/**/*
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes
