@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getAll();
+    //this.userService.getAll();
   }
 
   getAllGamesForUser(){

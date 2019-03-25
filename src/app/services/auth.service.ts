@@ -29,7 +29,6 @@ export class AuthService {
    
   }
 
-
   get isAuth() {
     return this._isAuth.getValue();
   }

@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
+import { GameService } from './services/game.service';
 
 
 
@@ -71,6 +72,7 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
   providers: [
     UserService,
     AuthService,
+    GameService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

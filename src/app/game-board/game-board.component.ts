@@ -1,6 +1,6 @@
 
 import { Router } from '@angular/router';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { GameService } from './../services/game.service';
 import { User } from './../models/users';
@@ -15,9 +15,9 @@ import { User } from './../models/users';
 export class GameBoardComponent implements OnInit {
 
   //board initilization
-  // private gameArray : Array<number>[9];
+  //private gameArray : Array<number>[9];
   gameArray: number[];
-// "012384567"
+  // "012384567"
   //access ? public= 0 : private =1
 
   constructor(
@@ -25,12 +25,33 @@ export class GameBoardComponent implements OnInit {
     private router: Router
   ) { }
 
-private board = Array(9).fill("X");
+  private board = Array(9).fill("X");
 
 
   ngOnInit() {
-    
+
   }
+
+  makeAMove($event, index) {
+   // get current value of the 
+      console.dir(this.gameService.gameStateCurrent.subscribe(gameState=>this.gameArray = gameState), "behaviorSubject object")
+      let x = this.gameService.gameStateCurrent.subscribe(gameState =>{
+       this.gameArray = gameState;
+       console.dir(gameState, "gameState");
+       console.log(typeof(gameState), "typeof gameState");
+       console.dir(this.gameArray, "this.gameArray");
+    })
+    //
+    
+      console.log(x);
+    let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
+    console.dir(turn, "turn");
+   // change all instanses of the game state so that it can be used in oter fuctions  
+    this.gameService.changeGameState(this.gameArray.splice(index, 1, turn));
+
+    this.gameService.sendPlayerMove(this.gameArray)
+  }
+
 
   refreshBoard() {
     // this.gameService.getBoard()
@@ -46,7 +67,7 @@ private board = Array(9).fill("X");
     //   
     // 
   }
- 
+
   //Check turn
   checkTurn() { // returns boolian, true if it is the current user's turn
     //this.gameArray
@@ -80,22 +101,5 @@ private board = Array(9).fill("X");
 
   }
 
-  makeAMove($event,index) {
-    //get current value of the 
-    console.dir(this.gameService.gameStateCurrent.subscribe(gameState=>this.gameArray = gameState), "behaviorSubject object")
-  let x = this.gameService.gameStateCurrent.subscribe(gameState =>{
-     this.gameArray = gameState;
-     console.dir(gameState, "gameState");
-     console.log(typeof(gameState), "typeof gameState");
-     console.dir(this.gameArray, "this.gameArray");
-  })
-    console.log(x);
-    
-    let turn = Math.max.apply(Math,this.gameArray.map(o =>{return o})) +1 ;
-    console.dir(turn, "turn") ;
-    //change all instanses of the game state so that it can be used in oter fuctions  
-    this.gameService.changeGameState(this.gameArray.splice(index,1,turn));
 
-    this.gameService.sendPlayerMove(this.gameArray)
-    }
 }
