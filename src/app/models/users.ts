@@ -6,5 +6,7 @@ export class User {
     lastName: string;
     email:string;
     aboutMe:string;
+    answer: string;
+    question: string;
     token? :string;
 }

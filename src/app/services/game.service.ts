@@ -1,66 +1,63 @@
-import { environment } from './../../environments/environment';
-import { HttpClient,HttpHeaders,HttpResponse, } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-
+import { HttpClient, HttpHeaders, HttpResponse, } from '@angular/common/http';
+import { Observable, BehaviorSubject, observable, of } from 'rxjs';
+import { Game } from '../models/game'
 
 import { environment as env } from '../../environments/environment';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GameService {
-access: any;
 
-private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  private currentGameSubject: BehaviorSubject<Game>
+  public currentGame: Observable<Game>
+ 
+  public gameStateCurrent = this.gameStateSource.asObservable();
+
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   options = {
-  headers: this.headers
+    headers: this.headers
   };
 
-public gameGrid = <Array<Object>>[[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-
   constructor(
-    private http: HttpClient
-
-    ) {}
-
-
-
-  getAllGamesInProgress(){
-    //
+    private http: HttpClient,
+    private route: Router
+  ) {
+    of()
   }
 
-  getGameById(id){
+  //call the next up-to-date gamestate from behaviorsubject
+  changeGameState(gameState){
+    this.currentGame.state =
+   // this.gameStateSource.next(gameState);
+  }
+
+
+  sendPlayerMove(state) {
+    console.log(state);
+    // this.http.post(env.API_URL + 'gameState', state)
+    
+  }
+  receivePlayerMove(): any {
+    this.http.get(env.API_URL + 'gameState')
 
   }
-  createNewGame(){
-    return this.http.get(env.API_URL+'games'+`${{}}`)
-    //{{this.gameArray}}
-    // this.http.post(env.API_URL+ '/game/',this.options)
-    // .subscribe(response =>{
-    //   response.json()
-    // })
+
+  getAllGamesInProgress() {
+    // this.http.get(env.API_URL+'gameState')
   }
-  
-  checkPlayerTurn(){
-    //get('move/turn')
-    this.http.get(env.API_URL+ '/game/')
+
+  getGameById(id) {
+    //this.http.get(env.API_URL+`gameState+${{id}}`)
   }
-  makePlayerMove(){
-    /*
-    checkPlayerTurn(){
-
-    }
-
-
-    */
-  }
-  getNextMove(){
-    //get("move/next")
-
+  createNewGame() {
+    //return this.http.get(env.API_URL + 'games' + `${{}}`)
 
   }
+
+
+
+
 
 
 

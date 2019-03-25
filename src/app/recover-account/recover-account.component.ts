@@ -1,39 +1,47 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Route } from '@angular/compiler/src/core';
-
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+import { UserService } from './../services/user.service';
 
 @Component({
   selector: 'app-recover-account',
   templateUrl: './recover-account.component.html',
   styleUrls: ['./recover-account.component.css']
 })
-export class RecoverAccountComponent  {
-  recoverForm: FormGroup;
+export class RecoverAccountComponent implements OnInit {
+  registerForm: FormGroup;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: Route,
-    private userService: UserService
-  ) { }
-}
- // implements OnInit  
-//   ngOnInit() {
-//     this.recoverForm = this.formBuilder.group({
-//       username: [''],
-//     });
-//   }
-// }
-//   get f() {
-//     return this.recoverForm.controls;
-//   }
-//   onRecover() {
-//     // this.userService
-//     //.pipe(first())
-//     //.subscribe(resp =>){
-//     //  this.route.navigate(['/question'])
-//   }
+    private router: Router,
 
-// }
+    private userService: UserService
+
+  ) { }
+
+  ngOnInit() {
+
+    //work on this
+    this.registerForm = new FormGroup({
+
+      username: new FormControl()
+    });
+
+  }
+
+  get f(){
+    let userValues = this.registerForm.controls;
+    console.log(userValues);
+    return userValues;
+  }
+
+  retrieveQuestion(){
+   /*
+    this.userService.getQuesetion 
+
+   */
+  }
+
+}

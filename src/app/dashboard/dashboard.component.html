@@ -1,8 +1,4 @@
-<p>
-    dashboard works!
-</p>
-
-<h1>Hi {{currentUser.firstName}}!</h1>
+<!-- <h1>Hi {{currentUser.firstName}}!</h1>
 <li *ngIf="authService.hasToken()"><a (click)="authService.logout()">Logout</a></li>
 
 <h3>All registered users:</h3>
@@ -10,29 +6,17 @@
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
     </li>
-</ul>
+</ul> -->
 
 <navbar></navbar>
-<game-board></game-board>
+<br>
+<div class="col-md-6 offset-md-3">
+ <game-board ></game-board>
+</div>
 
+<div>
+<br/>
 <h2 class="lead">New game</h2>
-<!-- <form [fromGroup]="createNewBoard" class="form-horizontal" (ngsubmit)="createNewGame()">
-
-    <div class="form-group">
-        <label for="gameType" class="col-md-2 control-label">Game type:</label>
-        <div class="col-md-8">
-            <select class="form-control" formControlname="gameType" ngModel name="newGameData.gameType">
-                <option ng-repeat="option in newGameOptions.availableGameTypes" value="{{option.name}}">{{option.name}}</option>
-            </select>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-4 col-sm-6" style="padding-bottom:50px">
-            <button type="submit" class="btn btn-md btn-primary"> New Game </button>
-        </div>
-    </div>
-</form> -->
-    
-
+<br>
+<button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
+</div>

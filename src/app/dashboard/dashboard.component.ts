@@ -13,21 +13,20 @@ import {User} from './../models/users';
 export class DashboardComponent implements OnInit {
   currentUser : User;
   gameService:GameService;
-  users:any[];
+  users: User[] = [];
   constructor(
     private authService: AuthService,
     private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.userService.getAll();
+    //this.userService.getAll();
   }
 
   getAllGamesForUser(){
     this.gameService.getAllGamesInProgress(); 
     //display all current games in progress for user
   }
-
 
   private getAllUsers(){
     this.userService.getAll().subscribe(response =>{

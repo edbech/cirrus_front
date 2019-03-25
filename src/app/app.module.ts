@@ -6,10 +6,9 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 
-
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
-//import { TokenInterceptor } from './token.interceptor';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,11 +17,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
-import { CellComponent } from './cell/cell.component';
-//import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
-
-
+import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -33,10 +29,8 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
     NavbarComponent,
     DashboardComponent,
     GameBoardComponent,
-    //RecoverAccountComponent,
-    CellComponent,
-    RecoverAccountComponent
-    
+    RecoverAccountComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,20 +58,21 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
         path: 'game',
         component: GameBoardComponent
       },
-      // {
-      //   path: 'accountrecovery',
-      //   component: RecoverAccountComponent
-      // }
+      {
+        path: 'accountrecovery',
+        component: RecoverAccountComponent
+      }
     ])
   ],
   providers: [
     UserService,
     AuthService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   //useClass: TokenInterceptor,
-    //   // multi: true
-    // }
+    GameService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
 ],
   
   bootstrap: [AppComponent]

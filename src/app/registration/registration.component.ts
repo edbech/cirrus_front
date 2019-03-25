@@ -40,9 +40,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onRegister() {
-
     console.log(this.registerForm.controls);
-
 
     this.userService.register(this.registerForm.value)
       .pipe(first())

@@ -16,14 +16,11 @@ export class UserService {
     ){}
 
   register(user:User){
-    // let userJson = JSON.stringify(user);
-    // return this.http.post(env.API_URL+ '/user/', userJson, this.options)
     return this.http.post(env.API_URL+`/users/`, user)
   }
 
   getAll(){
       return this.http.get<User[]>(env.API_URL+ '/user/');
- 
   }
 
   getById(id:number){
