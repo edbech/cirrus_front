@@ -1,3 +1,20 @@
-<p>
-  recover-account works!
-</p>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+        <form class="form-signin" #f="ngForm" (ngSubmit)="retrieveQuestion(f.value)">
+          <h2 class="form-signin-heading">Please enter Username</h2>
+         
+          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Recover Password</button>
+        </form>
+        <a routerLink="/login" class="btn btn-link">Login</a>
+
+      </div>
+    </div>
+  </div>
+</div>

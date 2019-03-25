@@ -1,48 +1,27 @@
 <p>
   game-board works!
+  sdsdfasdfsdfs
 </p>
 
 
-<!-- <div class="table-wrapper" [ngClass]="{'active': tableIsVisible}">
+
+
+<div class="table-wrapper" >
   <table>
     <tr>
-      <td (click)="makeAMove($event, 0)"></td>
-      <td (click)="makeAMove($event, 1)"></td>
-      <td (click)="makeAMove($event, 2)"></td>
+      <td (click)="makeAMove($event,0)">{{board[0]}}</td>
+      <td (click)="makeAMove($event, 1)">{{board[1]}}</td>
+      <td (click)="makeAMove($event, 2)">{{board[2]}}</td>
     </tr>
     <tr>
-      <td (click)="makeAMove($event, 3)"></td>
-      <td (click)="makeAMove($event, 4)"></td>
-      <td (click)="makeAMove($event, 5)"></td>
+      <td (click)="makeAMove($event, 3)">{{board[3]}}</td>
+      <td (click)="makeAMove($event, 4)">{{board[4]}}</td>
+      <td (click)="makeAMove($event, 5)">{{board[5]}}</td>
     </tr>
     <tr>
-      <td (click)="makeAMove($event, 6)"></td>
-      <td (click)="makeAMove($event, 7)"></td>
-      <td (click)="makeAMove($event, 8)"></td>
+      <td (click)="makeAMove($event, 6)">{{board[6]}}</td>
+      <td (click)="makeAMove($event, 7)">{{board[7]}}</td>
+      <td (click)="makeAMove($event, 8)">{{board[8]}}</td>
     </tr>
   </table>
-<label>Select to have game public or private</label> -->
-<!-- <mat-radio-group aria-label="publicOrPrivate" [(ngModel)]="publicOrPrivate">
-  <mat-radio-button value="1">Public</mat-radio-button>
-  <mat-radio-button value="2">Private</mat-radio-button>
-</mat-radio-group> -->
-
-
-
-<!-- <div>
-  <div class="gameStatus">
-    {{ gameStatusMessage }}
-  </div>
-  <div class="board" *ngFor="let row of [0,1,2]">
-    <app-cell *ngFor="let col of [0,1,2]" [value]="gameArray[col+row*3]" (click)="makeAMove(col+row*3)">
-    </app-cell>
-
-  </div>
-  <button class="restart" (click)="newGame()">New Game</button>
-</div> -->
-
-
-<!-- <div class="row buttons">
-    <button class="col s4 restart" (click)="restart()">New Game</button>
-  </div>
-</div> -->
+  

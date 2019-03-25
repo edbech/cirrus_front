@@ -19,8 +19,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
-import { CellComponent } from './cell/cell.component';
-//import { RecoverAccountComponent } from './recover-account/recover-account.component';
+import { RecoverAccountComponent } from './recover-account/recover-account.component';
+
 
 
 @NgModule({
@@ -32,10 +32,9 @@ import { CellComponent } from './cell/cell.component';
     NavbarComponent,
     DashboardComponent,
     GameBoardComponent,
-    CellComponent,
-   // RecoverAccountComponent,
+    RecoverAccountComponent,
   
-    
+
   ],
   imports: [
     BrowserModule,
@@ -63,10 +62,10 @@ import { CellComponent } from './cell/cell.component';
         path: 'game',
         component: GameBoardComponent
       },
-      // {
-      //   path: 'accountrecovery',
-      //   component: RecoverAccountComponent
-      // }
+      {
+        path: 'accountrecovery',
+        component: RecoverAccountComponent
+      }
     ])
   ],
   providers: [

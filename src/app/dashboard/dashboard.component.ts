@@ -5,7 +5,6 @@ import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {User} from './../models/users';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

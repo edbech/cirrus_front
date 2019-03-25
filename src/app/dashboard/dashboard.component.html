@@ -1,6 +1,4 @@
-<p>
-    dashboard works!
-</p>
+
 
 <!-- <h1>Hi {{currentUser.firstName}}!</h1>
 <li *ngIf="authService.hasToken()"><a (click)="authService.logout()">Logout</a></li>
@@ -13,12 +11,17 @@
 </ul> -->
 
 <navbar></navbar>
-<game-board></game-board>
+<br>
+<div class="col-md-6 offset-md-3">
+<game-board ></game-board>
+</div>
 
+<div>
+<br/>
 <h2 class="lead">New game</h2>
-
+<br>
 <button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
-
+</div>
 <!-- <form [fromGroup]="createNewBoard" class="form-horizontal" (ngsubmit)="createNewGame()">
 
     <div class="form-group">
@@ -38,3 +41,4 @@
     </div>
 </form> -->
     
+

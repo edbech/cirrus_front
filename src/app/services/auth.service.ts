@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,15 +9,13 @@ import { User } from '../models/users';
 import { environment as env } from '../../environments/environment';
 import { Credentials } from '../models/credentials';
 
-
-
-
 @Injectable()
 export class AuthService {
 
   private options = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
+
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -38,21 +37,18 @@ export class AuthService {
   set isAuth(value: boolean) {
     this._isAuth.next(value);
   }
-
-
   
 //this.options.headers
   login(credentials: Credentials) {
 
     let credentialsJson = JSON.stringify(credentials);
     console.log(credentialsJson);
-    let x = this.http.post(env.API_URL + '/users/auth', credentialsJson, this.options );
+    let x = this.http.post(env.API_URL + '/users/auth', credentialsJson,{ observe: 'response'} );
     console.log(x);
     
       x.pipe(map(resp => {
-        console.log(typeof(resp));
-        //localStorage.setItem('rbs-jwt', this.headers.get('Authorization'));
-        localStorage.setItem('rbs-user', JSON.stringify(resp));
+        localStorage.setItem('rbs-jwt', resp.headers.get('Authorization'));
+        localStorage.setItem('rbs-user', resp.headers.get('Principal') );
         this.isAuth = true;
         console.log(this.isAuth)
         console.log(localStorage.getItem('rbs-user'));
@@ -61,8 +57,7 @@ export class AuthService {
          })).subscribe();
            //resp =>{
           //  console.log(resp.headers.get('rbs-jwt'))
-         
-
+  
          this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
          console.log(this.currentUserSubject)
          this.currentUser = this.currentUserSubject.asObservable();
@@ -79,13 +74,9 @@ export class AuthService {
     this.route.navigate(['dashboard']);
   }
 
- private hasToken(): boolean {
-    return !!localStorage.getItem('rbs-jwt');
-  }
 
-  public get currentUserValue():User{
-    console.log("Inside ")
-    return this.currentUserSubject.value;
+  private hasToken(): boolean {
+    return !!localStorage.getItem('rbs-jwt');
   }
 
 }
