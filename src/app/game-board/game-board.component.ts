@@ -5,8 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from './../services/game.service';
 import { User } from './../models/users';
 
-
-
 @Component({
   selector: 'game-board',
   templateUrl: './game-board.component.html',
@@ -100,6 +98,4 @@ export class GameBoardComponent implements OnInit {
    */
 
   }
-
-
 }

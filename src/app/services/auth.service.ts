@@ -29,6 +29,7 @@ export class AuthService {
    
   }
 
+
   get isAuth() {
     return this._isAuth.getValue();
   }
@@ -73,9 +74,7 @@ export class AuthService {
     this.route.navigate(['dashboard']);
   }
 
-
   private hasToken(): boolean {
     return !!localStorage.getItem('rbs-jwt');
   }
-
 }
