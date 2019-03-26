@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-
 
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -23,8 +21,6 @@ import { RecoverAccountComponent } from './recover-account/recover-account.compo
 import { GameService } from './services/game.service';
 import { GameViewComponent } from './game-view/game-view.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +33,6 @@ import { GameViewComponent } from './game-view/game-view.component';
     RecoverAccountComponent,
     GameViewComponent,
   
-
   ],
   imports: [
     BrowserModule,
