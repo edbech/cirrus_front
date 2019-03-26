@@ -10,7 +10,7 @@ import { environment as env } from '../../environments/environment';
 export class GameService {
 
   // private currentGameSubject: BehaviorSubject<Game> 
-  // public currentGame: Observable<Game>
+  public currentGame: Observable<Game>
  
   // currentGame = {
   //   id:0,
@@ -55,8 +55,11 @@ export class GameService {
   getGameById(id) {
     //this.http.get(env.API_URL+`gameState+${{id}}`)
   }
-  createNewGame() {
-    //return this.http.get(env.API_URL + 'games' + `${{}}`)
+  createNewGame(player2Username,player1Username) {
+    /*
+    playerX,playerO,is public
+    */
+    return this.http.get(env.API_URL + 'games' + `${{}}`)
 
   }
 

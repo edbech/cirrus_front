@@ -37,7 +37,9 @@ export class RecoverAccountComponent implements OnInit {
     return userValues;
   }
 
-  retrieveQuestion(){
+  retrieveQuestion(username){
+
+    
    /*
     this.userService.getQuesetion 
 

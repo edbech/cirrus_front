@@ -20,15 +20,15 @@ export class UserService {
   }
 
   getAll(){
-      return this.http.get<User[]>(env.API_URL+ '/user/');
+      return this.http.get<User[]>(env.API_URL+ '/users');
   }
 
   getById(id:number){
-    return this.http.get(env.API_URL + `/users/${id}`);
+    return this.http.get(env.API_URL + `/user/${id}`);
   }
    
   updated(user:User){
-    return this.http.put(env.API_URL + `/users/${user.id}`,user);
+    return this.http.put(env.API_URL + `/user/${user.id}`,user);
   }
 
 }
