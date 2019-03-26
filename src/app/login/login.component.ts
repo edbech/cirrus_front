@@ -10,7 +10,7 @@ import { Credentials } from '../models/credentials';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
     credentialsInvalid: boolean;
     credentials: Credentials;
     isAuth$ = this.authService.isAuth$;
@@ -19,20 +19,21 @@ export class LoginComponent implements OnInit{
     constructor(
         private router: Router,
         private formBuilder: FormBuilder,
-        private authService: AuthService) {};
+        private authService: AuthService) { };
 
-    ngOnInit(){
+    ngOnInit() {
         this.loginForm = this.formBuilder.group({
-        username: [''],
-        password: [''],
-        })}
-      
-    
-    get f(){
+            username: [''],
+            password: [''],
+        })
+    }
+
+
+    get f() {
         return this.loginForm.controls;
     };
 
-    onLogin(){
+    onLogin() {
         console.log(this.loginForm.value);
         this.authService.login(this.loginForm.value);
         this.isAuth$.subscribe(isAuth => {
@@ -40,14 +41,10 @@ export class LoginComponent implements OnInit{
             if (isAuth) {
                 this.credentialsInvalid = false;
                 this.router.navigate(['/dashboard']);
-                
-            }else {
+
+            } else {
                 this.credentialsInvalid = true;
             }
         });
-
-
-
     }
-
 }

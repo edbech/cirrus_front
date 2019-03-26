@@ -14,9 +14,27 @@
  <game-board ></game-board>
 </div>
 
-<div>
+<!-- <div>
 <br/>
-<h2 class="lead">New game</h2>
-<br>
+<h2 class="lead">Create New game</h2>
+
+<form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+
+    <label for="username">Enter Other Player's Username</label>
+    <input type="text" formControlName="player2username" class="form-control" />
+    
+    <button  class="btn btn-primary">Login</button>
+    <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+      Invalid Credentials!
+    </div>
+    <br />
+  </form>
+
+</div>
+<button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary" > See All games in Progress</button>
+<br> -->
+
+
+<div>
 <button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
 </div>

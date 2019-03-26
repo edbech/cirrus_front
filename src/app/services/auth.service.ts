@@ -12,9 +12,6 @@ import { Credentials } from '../models/credentials';
 @Injectable()
 export class AuthService {
 
-  private options = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-    }
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -38,31 +35,34 @@ export class AuthService {
     this._isAuth.next(value);
   }
   
-//this.options.headers
-  login(credentials: Credentials) {
-
-    let credentialsJson = JSON.stringify(credentials);
-    console.log(credentialsJson);
-    let x = this.http.post(env.API_URL + '/users/auth', credentialsJson,{ observe: 'response'} );
-    console.log(x);
-    
-      x.pipe(map(resp => {
-        localStorage.setItem('rbs-jwt', resp.headers.get('Authorization'));
-        localStorage.setItem('rbs-user', resp.headers.get('Principal') );
+ async login(credentials: Credentials) {
+ 
+      let credentialsJson = JSON.stringify(credentials);
+      let response = await fetch(env.API_URL+ '/users/auth', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(credentials)
+      })
+      if (response.status == 200 || response.status == 201 || response.status == 101 ) {
         this.isAuth = true;
-        console.log(this.isAuth)
-        console.log(localStorage.getItem('rbs-user'));
-        console.log(localStorage.getItem('rbs-jwt'));
-       
-         })).subscribe();
-           //resp =>{
-          //  console.log(resp.headers.get('rbs-jwt'))
-  
+        console.log(this.isAuth);
+        let responseBody = await response.json();
+        console.log(responseBody);
+        
+        localStorage.setItem('jwt', response.headers.get('Authorization'));
+        localStorage.setItem('jwt-body', JSON.stringify(responseBody));
+    } else {
+      this.isAuth = false;
+    }    
          this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
-         console.log(this.currentUserSubject)
+         console.dir(this.currentUserSubject.next)
+         console.dir(this.currentUserSubject)
          this.currentUser = this.currentUserSubject.asObservable();
-         console.log(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
-         console.log(this.currentUser);
+         console.dir(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
+         console.dir(this.currentUser);
   }
 
   logout() {
@@ -71,7 +71,7 @@ export class AuthService {
       localStorage.removeItem('rbs-user');
     }
     this.isAuth = false;
-    this.route.navigate(['dashboard']);
+    this.route.navigate(['']);
   }
 
   private hasToken(): boolean {
