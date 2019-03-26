@@ -8,7 +8,6 @@ phases:
         commands:
             - echo Installing source NPM dependencies...
             - ls
-            - cd cirrus-front
             - npm install
             - npm install -g @angular/cli
     build:
@@ -17,12 +16,14 @@ phases:
             - ng build --prod
     post_build:
          commands:
+            - ls
             - aws s3 sync --delete dist s3://cirrus-front
             - echo Build completed on `date`
             - pwd
             - ls
 artifacts:
     files:
+        - ls
         - '**/*'
     base-directory: 'dist*'
     discard-paths: yes
