@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpRequest } from '@angular/common/http';
-
+import { Observable, observable } from 'rxjs';
 import { User } from '../models/users';
 import { environment as env } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
-  
+
+  currentUser: User;
+
   headers = new HttpHeaders({'Content-Type': 'application/json'});
   options = {
   headers: this.headers
@@ -28,7 +30,14 @@ export class UserService {
   }
    
   updated(user:User){
+
+    
     return this.http.put(env.API_URL + `/users/${user.id}`,user);
+  }
+
+  getUser(user:User){
+
+    return this.http.get<User[]>(env.API_URL + `/users/${user.id}`);
   }
 
 }

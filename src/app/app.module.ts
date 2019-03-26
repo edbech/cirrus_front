@@ -5,11 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -19,6 +17,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserprofileService } from './Services/userprofile.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { GameService } from './services/game.service';
     DashboardComponent,
     GameBoardComponent,
     RecoverAccountComponent,
+    UserProfileComponent,
+    UserListComponent,
+    ResetPasswordComponent
 
   ],
   imports: [
@@ -61,13 +66,19 @@ import { GameService } from './services/game.service';
       {
         path: 'accountrecovery',
         component: RecoverAccountComponent
-      }
+      },
+      { path: 'recover-account', component: RecoverAccountComponent },
+      { path: 'user-list', component: UserListComponent },
+      { path: 'user-profile', component: UserProfileComponent },
+      { path: 'reset-password', component: ResetPasswordComponent }
     ])
   ],
   providers: [
     UserService,
     AuthService,
     GameService,
+    UserprofileService,
+  
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
