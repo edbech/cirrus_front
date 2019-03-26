@@ -1,13 +1,12 @@
 version: 0.2
 environment_variables:
     plaintext:
-        S3_BUCKET: "cirrus-front"
+        S3_BUCKET: "cirrus-x"
         BUILD_ENV: "prod"
 phases:
     install:
         commands:
             - echo Installing source NPM dependencies...
-            - ls
             - npm install
             - npm install -g @angular/cli
     build:
@@ -16,8 +15,7 @@ phases:
             - ng build --prod
     post_build:
          commands:
-            - ls
-            - aws s3 sync s3://cirrus-front
+            - aws s3 sync s3://cirrus-x
             - echo Build completed on `date`
             - pwd
             - ls
