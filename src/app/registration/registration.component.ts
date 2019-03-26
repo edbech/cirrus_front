@@ -28,8 +28,8 @@ export class RegistrationComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      question: ['', Validators.required],
-      answer: ['', Validators.required],
+      securityquestion: ['', Validators.required],
+      securityanswer: ['', Validators.required],
     });
   }
   get f() {
