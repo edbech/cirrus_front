@@ -7,10 +7,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserprofileService } from './Services/userprofile.service';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
-
+//import { TokenInterceptor}  from './Services/interceptor.module';
 
 const ROUTES = [
   { path: '', component: AppComponent },
@@ -22,7 +22,6 @@ const ROUTES = [
 
 @NgModule({
   declarations: [
-    //HttpClientModule,
     AppComponent,
     RecoverAccountComponent,
     UserProfileComponent,
@@ -31,11 +30,13 @@ const ROUTES = [
   ],
 
   imports: [
-    HttpClientModule,
+    //TokenInterceptor
     RouterModule.forRoot(ROUTES),
     BrowserModule,
-    HttpClient,
-    FormsModule 
+   // HttpClient,
+    HttpClientModule,
+    FormsModule
+    
   ],
 
   providers: [

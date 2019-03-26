@@ -1,7 +1,36 @@
 <div id="userprofile-form" class="form-control">
   <h1 class="h3 mb-3 font-weight-normal">User Profile</h1>
+
+ <!-- User Avatar-->
+ <label for="user-avatar" class="sr-only">Avatar:</label>
+ <img  id="user-avatar" class="form-control"  name="avatar">
+ <br>
+
+
+<!-- User Retired-->
+<label for="user-retired" class="sr-only">Retired:</label>
+<label #userretired id="user-retired" type="text" class="form-control"  *ngFor="let user of users">{{ user.retired }}</label>
+<br>
   <br>
+  <ul>
 
+      <h2>{{ users.length }} users profile</h2>
+    <li *ngFor="let user of users">
+      {{ user.id }}
+      {{ user.email }}
+    </li>
+   
+  </ul> 
 
+ <!-- User Name
+ <label for="user-name"  class="sr-only">Username</label>
+ <input  id="user-name" value=" {{ user.username }}" type="text" class="form-control" >
+ <br><br><br>
+ -->
+
+ <h2>GET</h2>
+Name :<input type="text" (keyup)="onNameKeyUp($event)">
+<button (click)="getUser()">Get Profile</button>
+<br>
   <p class="mt-5 mb-3 text-muted">&copy;  Cirrus 2019</p>
 </div>

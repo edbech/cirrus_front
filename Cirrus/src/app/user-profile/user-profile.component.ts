@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserprofileService } from '../Services/userprofile.service';
 import { Injectable } from '@angular/core';
+//import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'user-profile',
@@ -9,36 +10,30 @@ import { Injectable } from '@angular/core';
 })
 
 export class UserProfileComponent implements OnInit {
-public users =[];
-//localhost:8080/cirrus-back/
-  constructor(private _userprofileService: UserprofileService) { }
 
-//1- HTTP get the request from userprofile.service
-//2- Receive the observable and cast into an user array
+ private users=[];
+  private username;
+  private found;
+
+constructor(private _userprofileService: UserprofileService) { }
+
+//1- HTTP get the request from userprofile.service getUser()
+//2- Receive the observable and cast into an users array
 //3- Subscribe to the observable from users or any compnent need this data from the array 
 //4- Assign the local data from the user array to local variable
 //*RxJS: Reactive extesions for javascript and external library to work with observables
   
 ngOnInit() {
-    this._userprofileService.getUser()
-      .subscribe(data=> this.users=data);
+     this._userprofileService.getUser()
+      .subscribe(
+          (data:any[]) => {
+            if(data.length) {
+              this.username = data[0].username;
+              this.found = true;        
+            }
+            console.log(data);
+            this.users=data;
+     }   
+     )
   }
-
-  // getUser(): void {
-  //   this.userprofile.service.getUserProfile()
-  //       .subscribe(users => this.users = users);
-  // }
-
-  // this.http.get(env.API_URL + 'users/', usersJson, { observe: 'response' })
- 
- 
-  // updateUser(): void {
-  //   this.userService.getUserProfile()
-  //       .subscribe(users => this.users = users);
-  // }
-  // let usersJson = JSON.stringify(credentials);
-
-  // this.http.post(env.API_URL + 'users', usersJson, { observe: 'response' })
-
- 
 }
