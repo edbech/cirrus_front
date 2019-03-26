@@ -36,6 +36,9 @@ export class GameBoardComponent implements OnInit {
   makeAMove($event, index) {
    // get current value of the 
       console.log("inside makeAMove");
+      if(!this.checkTurn()){
+        return;
+       }
 
       //behavior subject 
       // console.dir(this.gameService.currentGame);
@@ -92,6 +95,13 @@ export class GameBoardComponent implements OnInit {
   //Check turn
   checkTurn() { // returns boolian, true if it is the current user's turn
     //this.gameArray
+    let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
+    console.log(turn, "turn");
+    if(turn%2 == 0){
+      return false;
+    }
+    return true;;
+    
     /*find max value of gameArray 
     if even X, else O
     check if user matches if user is player X
