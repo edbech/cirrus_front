@@ -31,7 +31,6 @@ export class RegistrationComponent implements OnInit {
       email: ['', Validators.required],
       question: ['', Validators.required],
       answer: ['', Validators.required],
-
     });
   }
   get f() {
