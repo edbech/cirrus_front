@@ -17,7 +17,7 @@ phases:
     post_build:
          commands:
             - ls
-            - aws s3 sync --delete dist s3://cirrus-front
+            - aws s3 sync s3://cirrus-front
             - echo Build completed on `date`
             - pwd
             - ls
