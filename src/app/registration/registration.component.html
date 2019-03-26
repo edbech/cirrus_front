@@ -29,15 +29,23 @@
                         </div>
                     </div>
                 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
 
-                        <label>About-Me</label>
-                        <textarea type="text" formControlName="aboutMe" class="form-control" rows="4" cols="50"  [ngClass]="{ 'is-invalid': submitted && f.aboutMe.errors }"></textarea>
-                        <div *ngIf="submitted && f.aboutMe.errors" class="invalid-feedback">
-                            <div *ngIf="f.aboutMe.errors.required">Please fill About-Me section</div>
+                        <label>Recovery Question</label>
+                        <textarea type="text" formControlName="question" class="form-control" rows="4" cols="50"  [ngClass]="{ 'is-invalid': submitted && f.question.errors }"></textarea>
+                        <div *ngIf="submitted && f.question.errors" class="invalid-feedback">
+                            <div *ngIf="f.question.errors.required">Please fill recovery question section</div>
                             
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rcovery Answer</label>
+                        <input type="text" formControlName="answer" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.answer.errors }" />
+                        <div *ngIf="submitted && f.answer.errors" class="invalid-feedback">
+                            <div *ngIf="f.answer.errors.required">Please fill recovery answer section</div>
+                        </div>
+                    </div>
                    
                     <div class="form-group">
                         <button class="btn btn-primary">Register</button>

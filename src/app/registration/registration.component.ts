@@ -29,7 +29,8 @@ export class RegistrationComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      //aboutMe: ['', Validators.required],
+      question: ['', Validators.required],
+      answer: ['', Validators.required],
 
     });
   }
