@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.2
 environment_variables:
     plaintext:
         S3_BUCKET: "cirrus-front"
@@ -7,6 +7,7 @@ phases:
     install:
         commands:
             - echo Installing source NPM dependencies...
+            - cd cirrus-front
             - npm install
             - npm install -g @angular/cli
     build:
@@ -17,6 +18,8 @@ phases:
          commands:
             - aws s3 sync --delete dist s3://cirrus-front
             - echo Build completed on `date`
+            - pwd
+            - ls
 artifacts:
     files:
         - '**/*'
