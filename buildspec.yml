@@ -7,6 +7,7 @@ phases:
     install:
         commands:
             - echo Installing source NPM dependencies...
+            - ls
             - cd cirrus-front
             - npm install
             - npm install -g @angular/cli
