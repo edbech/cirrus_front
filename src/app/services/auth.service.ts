@@ -52,22 +52,23 @@ export class AuthService {
         console.log(responseBody);
         
         localStorage.setItem('jwt', response.headers.get('Authorization'));
-        localStorage.setItem('jwt-body', JSON.stringify(responseBody));
+        localStorage.setItem('jwt-user', JSON.stringify(responseBody));
     } else {
       this.isAuth = false;
     }    
-         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
+         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('jwt-user')));
          console.dir(this.currentUserSubject.next)
          console.dir(this.currentUserSubject)
          this.currentUser = this.currentUserSubject.asObservable();
-         console.dir(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
+         console.dir(credentialsJson,localStorage.getItem('jwt'),localStorage.getItem('jwt-user') )
          console.dir(this.currentUser);
   }
 
   logout() {
-    if(localStorage.getItem('rbs-user') || localStorage.getItem('rbs-jwt')) {
-      localStorage.removeItem('rbs-jwt');
-      localStorage.removeItem('rbs-user');
+    if(localStorage.getItem('jwt-user') || localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('jwt-user');
+    
     }
     this.isAuth = false;
     this.route.navigate(['']);

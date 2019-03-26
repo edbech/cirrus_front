@@ -25,10 +25,10 @@ export class GameBoardComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private router: Router
+   // private router: Router
   ) { }
 
-  private board = Array(9).fill("");
+   board = Array(9).fill("");
 
 
   ngOnInit() {

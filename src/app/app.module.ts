@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
+import { GameViewComponent } from './game-view/game-view.component';
 
 
 
@@ -34,6 +35,7 @@ import { GameService } from './services/game.service';
     DashboardComponent,
     GameBoardComponent,
     RecoverAccountComponent,
+    GameViewComponent,
   
 
   ],
