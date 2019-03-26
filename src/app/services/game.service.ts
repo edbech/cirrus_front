@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, } from '@angular/common/http';
-import { Observable, BehaviorSubject, observable, of } from 'rxjs';
+import { Observable, BehaviorSubject, observable } from 'rxjs';
 import { Game } from '../models/game'
 
 import { environment as env } from '../../environments/environment';
@@ -9,10 +9,14 @@ import { environment as env } from '../../environments/environment';
 @Injectable()
 export class GameService {
 
-  private currentGameSubject: BehaviorSubject<Game>
-  public currentGame: Observable<Game>
+  // private currentGameSubject: BehaviorSubject<Game> 
+  // public currentGame: Observable<Game>
  
-  public gameStateCurrent = this.gameStateSource.asObservable();
+  // currentGame = {
+  //   id:0,
+  //   state: Array(9).fill(0)
+  // }
+  //public gameStateCurrent = this.gameStateSource.asObservable();
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   options = {
@@ -23,19 +27,20 @@ export class GameService {
     private http: HttpClient,
     private route: Router
   ) {
-    of()
+   
   }
 
   //call the next up-to-date gamestate from behaviorsubject
-  changeGameState(gameState){
-    this.currentGame.state =
+  changeGameState(game){
+    // this.currentGameSubject = new BehaviorSubject<Game>(game);
+    // this.currentGame = this.currentGameSubject.asObservable();
    // this.gameStateSource.next(gameState);
   }
 
 
-  sendPlayerMove(state) {
-    console.log(state);
-    // this.http.post(env.API_URL + 'gameState', state)
+  sendPlayerMove(game) {
+    console.dir(game.state, "inside sendPlayerMove");
+    this.http.post(env.API_URL + '/games', game.state);
     
   }
   receivePlayerMove(): any {
