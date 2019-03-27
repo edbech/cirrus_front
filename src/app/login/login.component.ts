@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
                 this.credentialsInvalid = false;
                 this.router.navigate(['/dashboard']);
             } else {
-                this.credentialsInvalid = true;
+                //work on this do not know where to start
+                //this.credentialsInvalid = true;
             }
         });
     }

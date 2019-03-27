@@ -26,7 +26,20 @@ export class UserService {
   getById(id:number){
     return this.http.get(env.API_URL + `/user/${id}`);
   }
-   
+  getRecoveryQuestion(username){
+    return this.http.post(env.API_URL +'users/recoveryquestion/',username);
+    //return question
+  }
+  getRecoveryAnswer(usern,answer){
+    let body = {
+      username:usern,
+      securityanswer:answer
+    }
+    return this.http.post(env.API_URL +'users/recoveryanswer/', body);
+    //password
+  }
+  
+
   updated(user:User){
     return this.http.put(env.API_URL + `/user/${user.id}`,user);
   }
