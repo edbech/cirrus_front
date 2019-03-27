@@ -6,6 +6,8 @@ export class User {
     lastName: string;
     email:string;
     aboutMe:string;
+    securityanswer: string;
+    securityquestion: string;
     token? :string;
     score: number;
     securityquestion: string;

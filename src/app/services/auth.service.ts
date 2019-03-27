@@ -36,7 +36,8 @@ export class AuthService {
   }
   
  async login(credentials: Credentials) {
- 
+      console.log(credentials);
+      console.log(typeof(credentials));
       let credentialsJson = JSON.stringify(credentials);
       let response = await fetch(env.API_URL+ '/users/auth', {
           method: 'POST',

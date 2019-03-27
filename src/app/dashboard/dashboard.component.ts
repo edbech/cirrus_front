@@ -13,8 +13,7 @@ import { User } from './../models/users';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  currentUser;
-  gameService: GameService;
+  currentUser:User
   users: User[];
   newGameForm: FormGroup;
   usernameInvalid:boolean;
@@ -23,6 +22,7 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private gameService: GameService
     
   ) { }
 
@@ -35,34 +35,35 @@ export class DashboardComponent implements OnInit {
        console.log(this.users)
       }})
     this.currentUser = JSON.parse( localStorage.getItem("jwt-user"));
-    console.log(this.currentUser.id);
+    console.log(this.currentUser.userId);
     console.log(this.currentUser.username);
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-       isPublic: [false]
+       isPublic: ['']
     });
   }
 
   onCreateNewGame() {
-    console.log(this.currentUser.id);
-    console.log(this.newGameForm.value);
-    console.log(this.users[10].aboutMe);
-    // this.users.find(u => u.id === this.currentUser.id);
-
-    // for(let u of this.users){
-    //   if(this.newGameForm.value == this.users)
-    // }
-
+    console.log(this.currentUser.username, 'current user name');
+    console.log(this.newGameForm.value.isPublic, "ispublic" );
+    
+  let player2Id = this.users.find(u => u.username === this.newGameForm.value.player2username);
+  let gameIsPublicValue = 0; 
+    if(this.newGameForm.value.isPublic){
+      gameIsPublicValue = 1;
+    }else{
+      gameIsPublicValue = 0 ;
+    }
     /*
     will retieve new Game view 
     newgame and navigate to new game view 
     pame in progress and spectatei
     If a player in the game allow to make move
     */
-
-    // this.gameService.createNewGame(this.newGameForm.value, this.currentUser.username, 1).subscribe(resp =>{   
-    // })
+    this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
+    //.subscribe(resp =>{   
+    
   }
 
   logout(){
