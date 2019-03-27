@@ -31,7 +31,7 @@
 
 
 <div *ngIf="correctUsername" class="container">
-<!-- <h4>{{question}}</h4> -->
+<h4>{{this.question}}</h4>
 <!-- Have qustion here -->
 </div>
 
@@ -56,7 +56,7 @@
 
             <div class="form-group">
               <button class="btn btn-primary">Submit</button>
-
+              <a routerLink="/login" class="btn btn-link">Login</a>
             </div>
           </form>
         </div>
@@ -67,6 +67,6 @@
 
 
 <div *ngIf="correctAnswer" class="container">
-<!-- <h3>{{password}}</h3> -->
+<h3>{{this.password}}</h3>
 <!-- Have password here -->
 </div>

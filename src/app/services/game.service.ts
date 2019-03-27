@@ -9,15 +9,9 @@ import { environment as env } from '../../environments/environment';
 @Injectable()
 export class GameService {
 
-  // private currentGameSubject: BehaviorSubject<Game> 
+
   public currentGame: Observable<Game>
  
-  // currentGame = {
-  //   id:0,
-  //   state: Array(9).fill(0)
-  // }
-  //public gameStateCurrent = this.gameStateSource.asObservable();
-
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   options = {
     headers: this.headers
@@ -54,18 +48,17 @@ export class GameService {
   getGameById(id) {
     //this.http.get(env.API_URL+`gameState+${{id}}`)
   }
-  createNewGame(player1Id,player2Id,publicOrPrivate) {
+  createNewGame(player1Id,player2Id, publicOrPrivate) {
 
-    // publicOrPrivate = 1 ; this is hard coded will change once radio button works
     let body ={
       playerO: player1Id,
       playerX: player2Id,
       ispublic: publicOrPrivate
     }
-    /*
-    playerX,playerO,is public
-    */
-    return this.http.post(env.API_URL + 'games', body )
+    console.log(body);
+    console.log(JSON.stringify(body));
+    
+     return this.http.post(env.API_URL + 'games', body )
 
   }
 
