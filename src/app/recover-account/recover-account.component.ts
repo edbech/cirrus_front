@@ -54,7 +54,6 @@ export class RecoverAccountComponent implements OnInit {
   onRetrieveQuestion() {
     console.log(this.recoveryForm.value)
     this.userService.getRecoveryQuestion(this.recoveryForm.value)
-  
       .subscribe((resp : any)=>{
         console.log("check1");
         // console.log(resp);
