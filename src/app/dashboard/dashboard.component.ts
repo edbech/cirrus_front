@@ -34,12 +34,13 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-        isPublic: ['']
+       isPublic: [false]
     });
   }
 
   onCreateNewGame() {
-    console.log(this.newGameForm.value)
+    console.log(this.newGameForm.value);
+
     /*
     will retieve new Game view 
     newgame and navigate to new game view 
