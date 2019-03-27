@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -22,8 +22,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private route: Router
-    ){
-   
+  ) {
+
   }
 
 
@@ -34,39 +34,39 @@ export class AuthService {
   set isAuth(value: boolean) {
     this._isAuth.next(value);
   }
-  
- async login(credentials: Credentials) {
- 
-      let credentialsJson = JSON.stringify(credentials);
-      let response = await fetch(env.API_URL+ '/users/auth', {
-          method: 'POST',
-          mode: 'cors',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(credentials)
-      })
-      if (response.status == 200 || response.status == 201 || response.status == 101 ) {
-        this.isAuth = true;
-        console.log(this.isAuth);
-        let responseBody = await response.json();
-        console.log(responseBody);
-        
-        localStorage.setItem('jwt', response.headers.get('Authorization'));
-        localStorage.setItem('jwt-body', JSON.stringify(responseBody));
+
+  async login(credentials: Credentials) {
+
+    let credentialsJson = JSON.stringify(credentials);
+    let response = await fetch(env.API_URL + '/users/auth', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+    if (response.status == 200 || response.status == 201 || response.status == 101) {
+      this.isAuth = true;
+      console.log(this.isAuth);
+      let responseBody = await response.json();
+      console.log(responseBody);
+
+      localStorage.setItem('jwt', response.headers.get('Authorization'));
+      localStorage.setItem('jwt-body', JSON.stringify(responseBody));
     } else {
       this.isAuth = false;
-    }    
-         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
-         console.dir(this.currentUserSubject.next)
-         console.dir(this.currentUserSubject)
-         this.currentUser = this.currentUserSubject.asObservable();
-         console.dir(credentialsJson,localStorage.getItem('rbs-jwt'),localStorage.getItem('rbs-user') )
-         console.dir(this.currentUser);
+    }
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('rbs-user')));
+    console.dir(this.currentUserSubject.next)
+    console.dir(this.currentUserSubject)
+    this.currentUser = this.currentUserSubject.asObservable();
+    console.dir(credentialsJson, localStorage.getItem('rbs-jwt'), localStorage.getItem('rbs-user'))
+    console.dir(this.currentUser);
   }
 
   logout() {
-    if(localStorage.getItem('rbs-user') || localStorage.getItem('rbs-jwt')) {
+    if (localStorage.getItem('rbs-user') || localStorage.getItem('rbs-jwt')) {
       localStorage.removeItem('rbs-jwt');
       localStorage.removeItem('rbs-user');
     }

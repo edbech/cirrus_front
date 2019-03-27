@@ -11,8 +11,14 @@
 <navbar></navbar>
 <br>
 <div class="col-md-6 offset-md-3">
- <game-board ></game-board>
+  <game-board></game-board>
 </div>
+
+<a routerLink="/active-game-list">View your games</a>
+<br/>
+<a routerLink="/update-account">Change account details</a>
+<br/>
+<a routerLink="/highscores">View highscores!</a>
 
 <!-- <div>
 <br/>
@@ -36,5 +42,5 @@
 
 
 <div>
-<button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
+  <button (click)="authService.logout()" class="btn btn-primary"> Logout</button>
 </div>

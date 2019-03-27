@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 
-import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { TableService } from './active-game-list/table.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
+import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
+import { HighscoresComponent } from './highscores/highscores.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,9 @@ import { GameService } from './services/game.service';
     DashboardComponent,
     GameBoardComponent,
     RecoverAccountComponent,
+    ActiveGameListComponent,
+    UpdateAccountComponent,
+    HighscoresComponent,
 
   ],
   imports: [
@@ -61,13 +68,27 @@ import { GameService } from './services/game.service';
       {
         path: 'accountrecovery',
         component: RecoverAccountComponent
+      },
+      {
+        path: 'active-game-list',
+        component: ActiveGameListComponent
+      },
+      {
+        path: 'update-account',
+        component: UpdateAccountComponent
+      },
+      {
+        path: 'highscores',
+        component: HighscoresComponent
       }
+
     ])
   ],
   providers: [
     UserService,
     AuthService,
     GameService,
+    TableService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
