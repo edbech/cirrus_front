@@ -10,7 +10,6 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { TableService } from './active-game-list/table.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -41,7 +40,7 @@ import { HighscoresComponent } from './highscores/highscores.component';
     RecoverAccountComponent,
     UserProfileComponent,
     UserListComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,

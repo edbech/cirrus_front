@@ -25,10 +25,10 @@ constructor(private userService: UserService) { }
 //*RxJS: Reactive extesions for javascript and external library to work with observables
   
 ngOnInit() {
-     this.userService.getUser().subscribe((data:any[]) => {    
-            console.log(data);
-            this.user=data;
-     }   
-     )
+    //  this.userService.getUser().subscribe((data:any[]) => {    
+    //         console.log(data);
+    //         this.user=data;
+    //  }   
+    //  )
   }
 }

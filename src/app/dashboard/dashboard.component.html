@@ -38,11 +38,11 @@
         <label for="username">Enter to set game as public  </label>
         <br/>
         <input type="checkbox" class="form-control" value="checked" formControlName="isPublic">
-       <!-- <select class="form-control" >
+        <select class="form-control" >
             <option  name="isPublic" fromControlName="isPublic"  class="form-control" value="public" checked>Public
             <option  name="isPublic" fromControlName="isPublic" class="form-control" value="private">Private
         </select>-->
-         <br/>
+         <!-- <br/>
 
         <button class="btn btn-primary">New Game </button>
         <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
@@ -51,7 +51,7 @@
         <br />
     </form>
 
-</div>
+</div> -->
 <button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary"> See All games in Progress</button>
 <br>
 
