@@ -37,7 +37,7 @@ export class GameBoardComponent implements OnInit {
    // get current value of the 
       console.log("inside makeAMove");
       if(!this.checkTurn()){
-        return;
+        //return;
        }
 
       //behavior subject 
@@ -63,17 +63,25 @@ export class GameBoardComponent implements OnInit {
   //   this.gameService.sendPlayerMove(this.game
   
  
-    console.dir(this.gameArray);
-    console.log(this.gameArray,"before funstuff")
+   
+    console.log("before funstuff")
     //get max from array
     let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
+    if(turn > 9){
+      return;
+    }
     console.log(turn, "turn");
+    console.log(index); 
+    console.dir(this.gameArray);
+    console.log(this.gameArray[index]);
+    if(this.gameArray[index] == ""){
    // change all instanses of the game state so that it can be used in other fuctions  
     //this.gameService.changeGameState(this.gameArray.splice(index, 1, turn));
     console.log(this.gameArray.splice(index, 1, turn), "game.state.splice");
     console.log(this.gameArray);
     this.gameService.sendPlayerMove(this.gameArray)
      this.renderGame(this.gameArray)
+    }
   }
 
 
@@ -120,19 +128,19 @@ export class GameBoardComponent implements OnInit {
     console.log(this.board);
     //get specific game from ID
     for(let i = 0; i < gameState.length; i++) { 
-      console.log("inside For") 
+      //console.log("inside For") 
       if(gameState[i] == 0){
-        console.log("0")
+        //console.log("0")
         this.board[i] = ""
-        console.log(this.board)
+        //console.log(this.board)
       } else if (gameState[i] % 2 == 0){
-        console.log("even");
+        //console.log("even");
         this.board[i] = "O"
-        console.log(this.board)
+        //console.log(this.board)
       } else {
-        console.log("odd");
+        //console.log("odd");
         this.board[i]= "X"
-        console.log(this.board)
+        //console.log(this.board)
       }
     }
    
