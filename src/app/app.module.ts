@@ -6,8 +6,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from  '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { UserService } from './services/user.service';
+
 import { AuthService } from './services/auth.service';
+import { TableService } from './active-game-list/table.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { UserService } from './services/user.service';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -21,6 +25,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserprofileService } from './Services/userprofile.service';
+import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
+import { UpdateAccountComponent } from './update-account/update-account.component';
+import { HighscoresComponent } from './highscores/highscores.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +42,9 @@ import { UserprofileService } from './Services/userprofile.service';
     UserProfileComponent,
     UserListComponent,
     ResetPasswordComponent
+    ActiveGameListComponent,
+    UpdateAccountComponent,
+    HighscoresComponent,
 
   ],
   imports: [
@@ -63,22 +73,36 @@ import { UserprofileService } from './Services/userprofile.service';
         path: 'game',
         component: GameBoardComponent
       },
-      {
+     /* {
         path: 'accountrecovery',
         component: RecoverAccountComponent
-      },
+      }, */
       { path: 'recover-account', component: RecoverAccountComponent },
       { path: 'user-list', component: UserListComponent },
       { path: 'user-profile', component: UserProfileComponent },
-      { path: 'reset-password', component: ResetPasswordComponent }
+      { path: 'reset-password', component: ResetPasswordComponent },
+      {
+        path: 'active-game-list',
+        component: ActiveGameListComponent
+      },
+      {
+        path: 'update-account',
+        component: UpdateAccountComponent
+      },
+      {
+        path: 'highscores',
+        component: HighscoresComponent
+      }
+
     ])
   ],
   providers: [
     UserService,
     AuthService,
     GameService,
-    UserprofileService,
-  
+    UserprofileService,  
+    TableService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

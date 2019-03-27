@@ -1,5 +1,4 @@
 <!-- <h1>Hi {{currentUser.firstName}}!</h1>
-<li *ngIf="authService.hasToken()"><a (click)="authService.logout()">Logout</a></li>
 
 <h3>All registered users:</h3>
 <ul>
@@ -9,32 +8,58 @@
 </ul> -->
 
 <navbar></navbar>
+<p>Welcome {{this.currentUser.id}}</p>
+
 <br>
 <div class="col-md-6 offset-md-3">
- <game-board ></game-board>
+  <game-board></game-board>
 </div>
+
+<a routerLink="/active-game-list">View your games</a>
+<br/>
+<a routerLink="/update-account">Change account details</a>
+<br/>
+<a routerLink="/highscores">View highscores!</a>
 
 <!-- <div>
 <br/>
 <h2 class="lead">Create New game</h2>
 
-<form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+<div>
+    <br/>
+    <h2 class="lead">Create New game</h2>
 
-    <label for="username">Enter Other Player's Username</label>
-    <input type="text" formControlName="player2username" class="form-control" />
-    
-    <button  class="btn btn-primary">Login</button>
-    <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
-      Invalid Credentials!
-    </div>
-    <br />
-  </form>
+    <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+
+        <label for="username">Enter Other Player's Username</label>
+        <input type="text" formControlName="player2username" class="form-control" />
+        <br/>
+        <br/>
+        <label for="username">Enter to set game as public  </label>
+        <br/>
+        <input type="checkbox" class="form-control" value="checked" formControlName="isPublic">
+       <!-- <select class="form-control" >
+            <option  name="isPublic" fromControlName="isPublic"  class="form-control" value="public" checked>Public
+            <option  name="isPublic" fromControlName="isPublic" class="form-control" value="private">Private
+        </select>-->
+         <br/>
+
+        <button class="btn btn-primary">New Game </button>
+        <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+            Invalid Credentials!
+        </div>
+        <br />
+    </form>
 
 </div>
-<button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary" > See All games in Progress</button>
-<br> -->
-
+<button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary"> See All games in Progress</button>
+<br>
 
 <div>
-<button (click)="authService.logout()" class="btn btn-primary" > Logout</button>
+    <button (click)="logout()" class="btn btn-primary"> Logout</button>
+</div>
+
+<div>
+
+    <button (click)="getAllUsers()" class="btn btn-primary">GetAll users</button>
 </div>

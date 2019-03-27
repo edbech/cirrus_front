@@ -10,7 +10,7 @@ import { environment as env } from '../../environments/environment';
 export class GameService {
 
   // private currentGameSubject: BehaviorSubject<Game> 
-  // public currentGame: Observable<Game>
+  public currentGame: Observable<Game>
  
   // currentGame = {
   //   id:0,
@@ -41,11 +41,10 @@ export class GameService {
   sendPlayerMove(game) {
     console.dir(game.state, "inside sendPlayerMove");
     this.http.post(env.API_URL + '/games', game.state);
-    
   }
+
   receivePlayerMove(): any {
     this.http.get(env.API_URL + 'gameState')
-
   }
 
   getAllGamesInProgress() {
@@ -55,8 +54,18 @@ export class GameService {
   getGameById(id) {
     //this.http.get(env.API_URL+`gameState+${{id}}`)
   }
-  createNewGame() {
-    //return this.http.get(env.API_URL + 'games' + `${{}}`)
+  createNewGame(player1Id,player2Id,publicOrPrivate) {
+
+    // publicOrPrivate = 1 ; this is hard coded will change once radio button works
+    let body ={
+      playerO: player1Id,
+      playerX: player2Id,
+      ispublic: publicOrPrivate
+    }
+    /*
+    playerX,playerO,is public
+    */
+    return this.http.post(env.API_URL + 'games', body )
 
   }
 
