@@ -10,7 +10,6 @@ export class User {
     securityquestion: string;
     token? :string;
     score: number;
-    securityquestion: string;
     securityAnswer: string;
     avatar: string;
     retired: number;
