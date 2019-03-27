@@ -1,5 +1,6 @@
-export class User {
-    userId: number;
+export interface IUser{
+
+    id: number;
     username: string;
     password: string;
     firstName: string;
@@ -12,4 +13,6 @@ export class User {
     securityAnswer: string;
     avatar: string;
     retired: number;
+
+
 }
