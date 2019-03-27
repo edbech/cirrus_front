@@ -1,0 +1,17 @@
+<table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <!-- <td> Position </td>  iterate 1 - 100 -->
+        <td>{{ user.username }}</td>
+        <td>{{ user.score }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h1>Highscoresworksmaybe</h1>

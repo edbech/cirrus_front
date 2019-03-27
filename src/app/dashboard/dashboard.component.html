@@ -10,6 +10,20 @@
 <navbar></navbar>
 <p>Welcome {{this.currentUser.id}}</p>
 
+<br>
+<div class="col-md-6 offset-md-3">
+  <game-board></game-board>
+</div>
+
+<a routerLink="/active-game-list">View your games</a>
+<br/>
+<a routerLink="/update-account">Change account details</a>
+<br/>
+<a routerLink="/highscores">View highscores!</a>
+
+<!-- <div>
+<br/>
+<h2 class="lead">Create New game</h2>
 
 <div>
     <br/>
@@ -37,18 +51,15 @@
         <br />
     </form>
 
-    
-
 </div>
 <button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary"> See All games in Progress</button>
 <br>
-
 
 <div>
     <button (click)="logout()" class="btn btn-primary"> Logout</button>
 </div>
 
-
 <div>
+
     <button (click)="getAllUsers()" class="btn btn-primary">GetAll users</button>
 </div>
