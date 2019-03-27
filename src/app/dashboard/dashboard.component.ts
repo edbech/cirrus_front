@@ -17,7 +17,8 @@ export class DashboardComponent implements OnInit {
   gameService: GameService;
   users: User;
   newGameForm: FormGroup;
-  
+  usernameInvalid:boolean;
+
   constructor(
     private authService: AuthService,
     private userService: UserService,
@@ -39,6 +40,7 @@ export class DashboardComponent implements OnInit {
 
   onCreateNewGame() {
     console.log(this.newGameForm.value);
+
     /*
     will retieve new Game view 
     newgame and navigate to new game view 
@@ -47,8 +49,8 @@ export class DashboardComponent implements OnInit {
 
     */
 
-    // this.gameService.createNewGame(this.newGameForm,this.currentUser.usrname).subscribe(resp =>{   
-    // })
+    this.gameService.createNewGame(this.newGameForm,this.currentUser.usrname).subscribe(resp =>{   
+    })
   }
 
   logout(){

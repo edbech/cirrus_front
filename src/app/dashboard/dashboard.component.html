@@ -8,11 +8,11 @@
 </ul> -->
 
 <navbar></navbar>
-<p>Welcome {{this.currentUser.username}}</p>
+<p>Welcome {{this.currentUser.id}}</p>
 
 
 <div>
-    <br />
+    <br/>
     <h2 class="lead">Create New game</h2>
 
     <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
@@ -31,9 +31,9 @@
          <br/>
 
         <button class="btn btn-primary">New Game </button>
-        <!-- <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+        <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
             Invalid Credentials!
-        </div> -->
+        </div>
         <br />
     </form>
 
