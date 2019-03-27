@@ -28,11 +28,9 @@ export class LoginComponent implements OnInit {
         })
     }
 
-
     get f() {
         return this.loginForm.controls;
     };
-
     onLogin() {
         console.log(this.loginForm.value);
         this.authService.login(this.loginForm.value);
@@ -41,9 +39,9 @@ export class LoginComponent implements OnInit {
             if (isAuth) {
                 this.credentialsInvalid = false;
                 this.router.navigate(['/dashboard']);
-
             } else {
-                this.credentialsInvalid = true;
+                //work on this do not know where to start
+                //this.credentialsInvalid = true;
             }
         });
     }

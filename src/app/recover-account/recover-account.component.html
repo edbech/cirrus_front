@@ -2,19 +2,71 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
+        <h2>Recovery Password</h2>
+        <form [formGroup]="recoveryForm" (ngSubmit)="onRetrieveQuestion()">
 
-        <form class="form-signin" #f="ngForm" (ngSubmit)="retrieveQuestion(f.value)">
           <h2 class="form-signin-heading">Please enter Username</h2>
-         
-          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Recover Password</button>
-        </form>
-        <a routerLink="/login" class="btn btn-link">Login</a>
 
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+          </div>
+          <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+            Invalid Username
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary">Recieve Recovery Question</button>
+            <a routerLink="/login" class="btn btn-link">Login</a>
+          </div>
+
+        </form>
       </div>
     </div>
   </div>
+</div>
+
+
+<div *ngIf="correctUsername" class="container">
+<!-- <h4>{{question}}</h4> -->
+<!-- Have qustion here -->
+</div>
+
+
+<div *ngIf= "correctUsername" >
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2>Answer Security Question</h2>
+          <form [formGroup]="answerForm" (ngSubmit)="onAnswerQuestion()">
+
+            <h2 class="form-signin-heading">Please enter Answer to Security Question</h2>
+
+            <div class="form-group">
+              <label>Rcovery Answer</label>
+              <input type="text" formControlName="securityanswer" class="form-control" [ngClass]="{ 'is-invalid': submittedA && e.securityanswer.errors }" />
+              <div *ngIf="submittedA && e.securityanswer.errors" class="invalid-feedback">
+                <div *ngIf="e.securityanswer.errors.required">Please fill recovery answer section</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary">Submit</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="correctAnswer" class="container">
+<!-- <h3>{{password}}</h3> -->
+<!-- Have password here -->
 </div>
