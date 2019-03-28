@@ -45,7 +45,8 @@ export class UserService {
   }
   
   updated(user:User){
-    return this.http.put(env.API_URL + `/users/${user.userId}`,user);
+    console.log(user, "Inside UserService");
+    return this.http.put(env.API_URL + `/users/`,user);
   }
 
   getUser(user:User){

@@ -7,8 +7,7 @@
 
           <div class="form-group">
             <label>Security Question</label>
-            <input type="text" formControlName="question" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && x.question.errors }" />
+            <input type="text" formControlName="securityquestion" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.securityquestion.errors }" />
             <div *ngIf="submitted && x.question.errors" class="invalid-feedback">
               <div *ngIf="x.question.errors.required">Something didn't work there. Tell me: what is the question?</div>
             </div>
@@ -16,8 +15,7 @@
 
           <div class="form-group">
             <label>Security Answer</label>
-            <input type="answer" formControlName="answer" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && x.answer.errors }" />
+            <input type="answer" formControlName="securityanswer" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.securityanswer.errors }" />
             <div *ngIf="submitted && x.answer.errors" class="invalid-feedback">
               <div *ngIf="x.answer.errors.required">Something didn't work there... Maybe that's the wrong answer.</div>
             </div>
@@ -25,8 +23,7 @@
 
           <div class="form-group">
             <label>Password</label>
-            <input type="password" formControlName="password" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
             <div *ngIf="submitted && x.password.errors" class="invalid-feedback">
               <div *ngIf="x.password.errors.required">You've changed your password inappropriately</div>
             </div>
@@ -34,8 +31,7 @@
 
           <div class="form-group">
             <label>You're so interesting! Tell us about yourself:</label>
-            <textarea type="text" formControlName="aboutMe" class="form-control" rows="4" cols="50"
-              [ngClass]="{ 'is-invalid': submitted && x.aboutMe.errors }"></textarea>
+            <textarea type="text" formControlName="aboutMe" class="form-control" rows="4" cols="50" [ngClass]="{ 'is-invalid': submitted && x.aboutMe.errors }"></textarea>
             <div *ngIf="submitted && x.aboutMe.errors" class="invalid-feedback">
               <div *ngIf="x.aboutMe.errors.required">Something didn't work there. Maybe try telling me something
                 different...</div>
@@ -44,9 +40,10 @@
 
           <div class="form-group">
             <button class="btn btn-primary">Click this big ole button to submit changes</button>
-
-            <a routerLink="/login" class="btn btn-link">Don't click here unless you want to go back to the login
-              page</a>
+            <br>
+            <a routerLink="/dashboard" class="btn btn-link">Back to Dashboard</a>
+            <br>
+            <a routerLink="/login" class="btn btn-link">Don't click here unless you want to go back to the loginpage</a>
           </div>
         </form>
       </div>
