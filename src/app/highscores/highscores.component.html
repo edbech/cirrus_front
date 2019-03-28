@@ -1,17 +1,30 @@
-<table>
-    <thead>
-      <tr>
-        <th>Position</th>
-        <th>Username</th>
-        <th>Score</th>
+
+
+<body id="body">
+
+      <br>
+      <br>
+      <br>
+      
+    <div id="scorelist" class="container">
+        
+    <h1>HIGH SCORES</h1>
+    <br>
+    <table id="table" class="table">
+    
+      <tr class="row">
+        <th class="col" >Username</th>
+        <th class="col">Score</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <!-- <td> Position </td>  iterate 1 - 100 -->
-        <td>{{ user.username }}</td>
-        <td>{{ user.score }}</td>
+
+      <tr  class="row" *ngFor="let user of users">
+        <td class="col"> {{ this.user[0] }} </td> 
+        <td  class="col"> {{this.user[1]}}</td>  
       </tr>
-    </tbody>
-  </table>
-  <h1>Highscoresworksmaybe</h1>
+    </table>
+    </div>
+  </body>
+
+
+
+
