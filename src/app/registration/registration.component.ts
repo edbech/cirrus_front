@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
 
   onRegister() {
     console.log(this.registerForm.controls);
-
+    console.log(this.registerForm.value);
     this.userService.register(this.registerForm.value)
       .pipe(first())
       .subscribe(resp => {
