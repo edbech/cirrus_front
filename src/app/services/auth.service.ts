@@ -70,13 +70,14 @@ export class AuthService {
     if(localStorage.getItem('jwt-user') || localStorage.getItem('jwt')) {
       localStorage.removeItem('jwt');
       localStorage.removeItem('jwt-user');
-    
+      localStorage.removeItem('rbs-user');
+      this.route.navigate(['/login']);
     }
     this.isAuth = false;
     this.route.navigate(['']);
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem('rbs-jwt');
+    return !!localStorage.getItem('jwt');
   }
 }
