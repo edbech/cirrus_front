@@ -45,12 +45,11 @@ export class GameService {
   getGames() {
     return this.http.get(env.API_URL + '/games');
   }
-  getGameById(id) {
-    return this.http.get(env.API_URL + '/games/' + id);
-  }
+ 
   getGameById(id) {
     return this.http.get(env.API_URL+'/games/' + id);
   }
+  
   createNewGame(player1Id, player2Id, publicOrPrivate) {
     let body = {
       playerO: player1Id,
