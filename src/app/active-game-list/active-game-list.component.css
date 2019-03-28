@@ -1,0 +1,22 @@
+
+
+   #body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14;
+     background-image: url("tic2.jpg");
+    } 
+
+   #gamelist {
+       align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: rgba(214, 239, 240, 0.7);
+     opacity:.99;
+     box-shadow: rgba(110, 117, 114, 0.2);
+    
+
+     }
+     
+   #table {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-content: center space-between;
+      }
