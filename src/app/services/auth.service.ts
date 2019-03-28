@@ -55,15 +55,17 @@ export class AuthService {
         
         localStorage.setItem('jwt', response.headers.get('Authorization'));
         localStorage.setItem('jwt-user', JSON.stringify(responseBody));
+        return true;
     } else {
       this.isAuth = false;
-    }    
-         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('jwt-user')));
-         console.dir(this.currentUserSubject.next)
-         console.dir(this.currentUserSubject)
-         this.currentUser = this.currentUserSubject.asObservable();
-         console.dir(credentialsJson,localStorage.getItem('jwt'),localStorage.getItem('jwt-user') )
-         console.dir(this.currentUser);
+      return false;
+     }    
+    //      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('jwt-user')));
+    //      console.dir(this.currentUserSubject.next)
+    //      console.dir(this.currentUserSubject)
+    //      this.currentUser = this.currentUserSubject.asObservable();
+    //      console.dir(credentialsJson,localStorage.getItem('jwt'),localStorage.getItem('jwt-user') )
+    //      console.dir(this.currentUser);
   }
 
   logout() {

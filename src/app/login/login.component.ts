@@ -32,10 +32,8 @@ export class LoginComponent implements OnInit {
         return this.loginForm.controls;
     };
     onLogin() {
-        console.log(this.loginForm.value);
-        this.authService.login(this.loginForm.value);
-        this.isAuth$.subscribe(isAuth => {
-            console.log(isAuth);
+        //console.log(this.loginForm.value);
+        this.authService.login(this.loginForm.value).then(isAuth => {
             if (isAuth) {
                 this.credentialsInvalid = false;
                 this.router.navigate(['/dashboard']);

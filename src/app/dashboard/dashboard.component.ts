@@ -40,9 +40,9 @@ export class DashboardComponent implements OnInit {
     //    console.log(this.users)
     //   }})
     this.currentUser = JSON.parse(localStorage.getItem("jwt-user"));
-    console.log(this.currentUser.userId);
-    console.log(this.currentUser.username);
-    console.log(this.currentUser.password);
+    //console.log(this.currentUser.userId);
+    //console.log(this.currentUser.username);
+    //console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
         
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onCreateNewGame() {
-    console.log(this.currentUser.username, 'current user name');
+    //console.log(this.currentUser.username, 'current user name');
     //console.log(this.newGameForm.value.isPublic, "ispublic" );
     
 
@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
     */ 
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
     .subscribe(resp =>{ 
-      console.log(resp);
+      //console.log(resp);
       localStorage.setItem('game', JSON.stringify(resp));
       this.router.navigate(['game-view']);
       })  
