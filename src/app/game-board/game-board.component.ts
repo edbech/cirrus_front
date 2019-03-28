@@ -173,4 +173,11 @@ private currentUser:User;
       }
   }
 }
+refresh(){
+  this.gameService.getGameById(this.currentGame.gameId).subscribe((resp: Game) => {
+    console.log(resp);
+    localStorage.setItem('game', JSON.stringify(resp));
+    this.router.navigate(['game-view']);
+  });
+}
 }
