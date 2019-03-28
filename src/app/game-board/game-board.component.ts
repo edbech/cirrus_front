@@ -174,10 +174,12 @@ private currentUser:User;
   }
 }
 refresh(){
+  console.log("Refresh");
   this.gameService.getGameById(this.currentGame.gameId).subscribe((resp: Game) => {
     console.log(resp);
     localStorage.setItem('game', JSON.stringify(resp));
-    this.router.navigate(['game-view']);
+    this.currentGame.gamestate = resp.gamestate;
+    this.renderGame();
   });
 }
 }
