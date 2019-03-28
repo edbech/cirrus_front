@@ -1,54 +1,25 @@
 
 
 <navbar></navbar>
-<!-- <p *ngIf = "this.currentUser.userId"> Welcome {{this.currentUser.userId}}</p> -->
-
-<br>
-
-
-<a routerLink="/active-game-list">View your games</a>
-<br />
-<a routerLink="/update-account">Change account details</a>
-<br />
-<!--<a routerLink="/highscores">View highscores!</a>-->
 
 <div>
-    <br />
-    <h2 class="lead">Create New game</h2>
-
-    <div>
-        <br />
-        <h2 class="lead">Create New game</h2>
-
-      <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+    <div id="newgame">
+        <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+            <h2 class="lead">Create New game</h2>
             <div class="form-group">
                 <label for="username">Enter Other Player's Username</label>
                 <input type="text" formControlName="player2username" class="form-control" />
             </div>
-
+            <br/>
             <div class="form-group">
                 <button class="btn btn-primary">New Game </button>
             </div>
             <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
                 Invalid Credentials!
             </div>
-         
         </form>
-
-        <div class="col-md-6 offset-md-3">
-            <active-game-list></active-game-list>
-        </div>
-       
-
-
-    </div>
-    <button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary"> See All games in Progress</button>
-    <br>
-
-    <div>
-        <button (click)="logout()" class="btn btn-primary"> Logout</button>
     </div>
 
-    <div>
-        <button (click)="getAllUsers()" class="btn btn-primary">GetAll users</button>
+    <div class="col-md-6 offset-md-3">
+        <active-game-list></active-game-list>
     </div>
