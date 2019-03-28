@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-       
+        isPublic: ['']
         
     });
   }
