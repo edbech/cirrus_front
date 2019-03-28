@@ -84,12 +84,16 @@ export class RecoverAccountComponent implements OnInit {
           console.log(this.user);
           console.log("Here");
           this.correctAnswer = true;
-          let body: Credentials;
-          body.username = this.user.username;
-          body.password = this.user.password;
+          // body.username = this.user.username;
+          // body.password = this.user.password;
+          console.log(this.user.password);
+          console.log(this.user.username);
+          let body = new Credentials(this.user.username, this.user.password);
+          console.log(body);
+
           //{"username":"Gabe3","password":"Zapato"} 
           this.authService.login(body);
-           
+          this.router.navigate(['/dashboard']);
           
          }
          else{
