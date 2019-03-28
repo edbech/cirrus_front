@@ -12,18 +12,13 @@ import { Game } from './../models/game';
 })
 export class GameBoardComponent implements OnInit {
 
-  //board initilization
-  private gameArray = Array(9).fill(0)
-  // private game:Game ={
-  //   id:0,
-  //   state: Array(9).fill(0)
-  // }
-  // "012384567"
-  //access ? public= 0 : private =1
+
+private gameArray = Array(9).fill(0)
+private currentGame: Game;
 
   constructor(
     private gameService: GameService,
-   // private router: Router
+    private router: Router
   ) { }
 
    board = Array(9).fill("");
@@ -39,32 +34,6 @@ export class GameBoardComponent implements OnInit {
       if(!this.checkTurn()){
         //return;
        }
-
-      //behavior subject 
-      // console.dir(this.gameService.currentGame);
-      // console.dir(this.gameService.currentGame.subscribe(updatedgame=>this.game = updatedgame), "behaviorSubject object")
-      // let x = this.gameService.currentGame.subscribe(updatedgame=>{
-      //   this.game = updatedgame;
-      //   console.dir(updatedgame)
-      // })
-    //   let x = this.gameService.currentGame.subscribe(gameState =>{
-    //    this.gameArray = gameState;
-    //    console.dir(gameState, "gameState");
-    //    console.log(typeof(gameState), "typeof gameState");
-    //    console.dir(this.gameArray, "this.gameArray");
-    // })
-    //
-  //   console.dir(x);
-  //   let turn = Math.max.apply(Math, this.game.state.map(o => { return o })) + 1;
-  //   console.dir(turn, "turn");
-  //  // change all instanses of the game state so that it can be used in oter fuctions  
-  //   this.gameService.changeGameState(this.game.state.splice(index, 1, turn));
-  //   console.dir(this.game.state.splice(index, 1, turn), "game.state.splice");
-  //   this.gameService.sendPlayerMove(this.game
-  
- 
-   
-    console.log("before funstuff")
     //get max from array
     let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
     if(turn > 9){
@@ -79,27 +48,30 @@ export class GameBoardComponent implements OnInit {
     //this.gameService.changeGameState(this.gameArray.splice(index, 1, turn));
     console.log(this.gameArray.splice(index, 1, turn), "game.state.splice");
     console.log(this.gameArray);
-    this.gameService.sendPlayerMove(this.gameArray)
-     this.renderGame(this.gameArray)
+   
+    this.currentGame = JSON.parse(localStorage.getItem('game'));
+    this.currentGame.gamestate = this.gameArray;
+    console.log(this.currentGame)
+    console.log(localStorage.getItem('game'));
+    this.gameService.sendPlayerMove(this.currentGame.gameId, this.currentGame.gamestate).subscribe(resp=>{
+      if(resp){
+        this.renderGame(this.gameArray);
+        //remove old game object is resp successfull and add new game state to local storage
+        localStorage.removeItem('game');
+        localStorage.setItem('game', JSON.stringify(this.currentGame ))
+         //this.router.navigate(['/dashboard']);
+      }
+      //have notification that move was not sent successfully
+
+    })
+     
     }
   }
 
-
   refreshBoard() {
     // this.gameService.getBoard()
-    // 
-    // 
   }
-
-  //Start Newgame
-  newGame() {
-    //
-    //this.gameService.createNewGame
-    // 
-    //   
-    // 
-  }
-
+ 
   //Check turn
   checkTurn() { // returns boolian, true if it is the current user's turn
     //this.gameArray
@@ -108,7 +80,7 @@ export class GameBoardComponent implements OnInit {
     if(turn%2 == 0){
       return false;
     }
-    return true;;
+    return true;
     
     /*find max value of gameArray 
     if even X, else O
@@ -124,6 +96,7 @@ export class GameBoardComponent implements OnInit {
   }
   //RenderPlayedGame
   renderGame(gameState) {
+
     console.log(gameState.length,"in renderGame");
     console.log(this.board);
     //get specific game from ID

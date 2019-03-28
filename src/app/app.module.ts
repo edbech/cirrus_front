@@ -45,6 +45,7 @@ import { GameViewComponent } from './game-view/game-view.component';
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
+    GameViewComponent
 
   ],
   imports: [
@@ -99,8 +100,9 @@ import { GameViewComponent } from './game-view/game-view.component';
         path: 'highscores',
         component: HighscoresComponent
       },
-      {path: 'game-view',
-       component: GameViewComponent
+      {
+        path: 'game-view',
+        component: GameViewComponent
       }
 
     ])

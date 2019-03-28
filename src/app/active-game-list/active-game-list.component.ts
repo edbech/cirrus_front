@@ -1,21 +1,31 @@
-import { TableService } from './table.service';
+import { Game } from './../models/game';
+import { GameService } from './../services/game.service';
 import { Component, OnInit } from '@angular/core';
-import { Table } from './Table';
+
 
 @Component({
-  selector: 'app-active-game-list',
+  selector: 'active-game-list',
   templateUrl: './active-game-list.component.html',
   styleUrls: ['./active-game-list.component.css']
 })
 export class ActiveGameListComponent implements OnInit {
-  games: Table[];
+  game:Game;
 
-  constructor(private tservice: TableService) { }
+  constructor(
+    private gameService: GameService) { }
 
   ngOnInit() {
-    this.tservice.getData().subscribe((data: Table[]) => {
-      console.log(data);
-      this.games=data;
+    this.gameService.getGames().subscribe((resp: Game[]) => {
+      console.log(resp);
+      for(let i = 0; i< resp.length;i++){
+          this.game.gameId = resp[i].gameId;
+          this.game.playerX = resp[i].playerX
+          this.game.playerO = resp[i].playerO;
+          this.game.started = resp[i].started 
+          this.game.finished = resp[i].finished 
+          this.game.result = resp[i].result 
+
+      }
     })
   }
 }
