@@ -1,28 +1,30 @@
-<table>
-  <thead>
-    <tr>
-      <th>Game Id</th>
-      <th>PlayerX</th>
-      <th>PlayerO</th>
-      <th>Result</th>
+<body id="body">
+
+  <br>
+  <br>
+  <br>
+  
+<div id="gamelist" class="container">
+
+  <table id="table" class="table">
+    <tr  class="row" *ngFor="let game of games">
+      <td class="col"> Game id:  {{ this.game.gameId }} </td> 
+      <td  class="col"> Player X:  {{ this.game.playerX}}</td> 
+      <td  class="col"> Player O:  {{ this.game.playerO }}</td>
+      <td class="col"> Game result: {{ this.game.result }}</td> 
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let game of games">
-      <td>{{ this.game.gameId }}</td>
-      <td>{{ this.game.playerX}}</td>
-      <td>{{ this.game.playerO }}</td>
-      <td>{{ this.game.result }}</td>
-    </tr>
-  </tbody>
 </table>
-<form [formGroup]="gameForm" (ngSubmit)="goToGame()">
-<div class="form-group">
-  <label for="gameid">Enter game ID you want to play</label>
+
+<form class="form-group" [formGroup]="gameForm" (ngSubmit)="goToGame()">
+
+  <label  for="gameid">Enter game ID you want to play</label>
+  <br>
   <input type="number" formControlName="gameid" class="form-control" />
-</div>
-<div class="form-group">
+  <br>
   <button class="btn btn-primary">Play Game </button>
-</div>
 </form>
+  
 <p>For Games See console</p>
+<br>  <br>
+</div>
+</body>
