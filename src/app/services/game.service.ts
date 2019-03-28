@@ -19,11 +19,10 @@ export class GameService {
 
   }
 
-
   sendPlayerMove(gameId, gamestate) {
-   
+
     let gamestate2: string = '';
-    for(let i=0; i < gamestate.length; i++){
+    for (let i = 0; i < gamestate.length; i++) {
       gamestate2 += gamestate[i];
     }
     console.log(gamestate2);
@@ -44,7 +43,10 @@ export class GameService {
   }
 
   getGames() {
-    return this.http.get(env.API_URL+'/games');
+    return this.http.get(env.API_URL + '/games');
+  }
+  getGameById(id) {
+    return this.http.get(env.API_URL + '/games/' + id);
   }
   createNewGame(player1Id, player2Id, publicOrPrivate) {
     let body = {
@@ -64,10 +66,4 @@ export class GameService {
     }
     this.route.navigate(['/dashboard']);
   }
-
-
-
-
-
-
 }
