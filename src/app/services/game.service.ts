@@ -48,9 +48,6 @@ export class GameService {
   getGameById(id) {
     return this.http.get(env.API_URL + '/games/' + id);
   }
-  getGameById(id) {
-    return this.http.get(env.API_URL+'/games/' + id);
-  }
   createNewGame(player1Id, player2Id, publicOrPrivate) {
     let body = {
       playerO: player1Id,
@@ -69,4 +66,8 @@ export class GameService {
     }
     this.route.navigate(['/dashboard']);
   }
+  getDog(){
+    return this.http.get('https://api.thedogapi.com/v1/images/search')
+}
+  getCat(){return this.http.get('https://api.thecatapi.com/v1/images/search');}
 }
