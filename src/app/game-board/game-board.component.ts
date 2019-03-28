@@ -43,21 +43,26 @@ private currentUser:User;
     let turn = Math.max.apply(Math, split) + 1;
     let currentUser = this.currentUser.username;
     if(this.moveNumber < turn){
+      console.log("Move<turn");
       return;
     }
     if(turn > 9){
+      console.log("turn>9");
       return;
     }
     if(this.currentGame.result != "INPROGRESS"){
+      console.log("Not Inprogress");
       return;
     }
     if(turn%2 == 1){
       if(currentUser != this.currentGame.playerX){
-        //return;
+        console.log("not player X turn");
+        return;
       }
     } else {
       if(currentUser != this.currentGame.playerO){
-       //return;
+        console.log("not player O turn");
+       return;
       }
     }
     if(this.board[index] == ""){
