@@ -42,13 +42,16 @@ private currentUser:User;
     if(turn > 9){
       return;
     }
-    if(turn%2 == 0){
+    if(this.currentGame.result != "INPROGRESS"){
+      return;
+    }
+    if(turn%2 == 1){
       if(currentUser != this.currentGame.playerX){
         //return;
       }
     } else {
       if(currentUser != this.currentGame.playerO){
-        //return;
+       //return;
       }
     }
     if(this.board[index] == ""){
@@ -57,7 +60,6 @@ private currentUser:User;
       console.log(this.currentGame.gamestate);
       this.gameService.sendPlayerMove(this.currentGame.gameId, this.currentGame.gamestate).subscribe(resp=>{
         if(resp){
-          console.log(resp);
           this.renderGame();
           //remove old game object is resp successfull and add new game state to local storage
           //localStorage.removeItem('game');

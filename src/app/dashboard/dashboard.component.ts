@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-        isPublic: ['']
+        
         
     });
   }
@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
     newgame and navigate to new game view 
     pame in progress and spectatei
     If a player in the game allow to make move
-    */
+    */ 
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
     .subscribe(resp =>{ 
       console.log(resp);

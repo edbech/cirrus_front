@@ -22,10 +22,9 @@ export class ActiveGameListComponent implements OnInit {
   ngOnInit() {
     this.gameService.getGames().subscribe((resp: Game[]) => {
       for(let i = 0; i< resp.length;i++){
+        console.log(resp[i]);
         let g = new Game;
-        g.gameId = resp[i].gameId;
-        g.playerX = resp[i].playerX;
-        g.playerO = resp[i].playerO;
+        g = resp[i];
         this.games.push(g);
       }
     });
