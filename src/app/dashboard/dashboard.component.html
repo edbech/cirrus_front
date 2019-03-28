@@ -4,9 +4,7 @@
 <!-- <p *ngIf = "this.currentUser.userId"> Welcome {{this.currentUser.userId}}</p> -->
 
 <br>
-<div class="col-md-6 offset-md-3">
-    <game-board></game-board>
-</div>
+
 
 <a routerLink="/active-game-list">View your games</a>
 <br />
@@ -46,7 +44,13 @@
          
         </form>
 
-  </div>
+        <div class="col-md-6 offset-md-3">
+            <active-game-list></active-game-list>
+        </div>
+       
+
+
+    </div>
     <button (click)="gameService.getAllGamesInProgress()" class="btn btn-primary"> See All games in Progress</button>
     <br>
 
@@ -55,6 +59,5 @@
     </div>
 
     <div>
-
         <button (click)="getAllUsers()" class="btn btn-primary">GetAll users</button>
     </div>

@@ -1,7 +1,12 @@
 export class Game{
-id:number
-state:number[]
+gameId:number
+gamestate:number[]
 playerX:string
 playerO:string
+finished:Date
+isPublic:number
+​​​result: string
+​​started:Date
+
 
 }

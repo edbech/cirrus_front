@@ -20,10 +20,19 @@ export class GameService {
   }
 
 
-  sendPlayerMove(updatedGame) {
-    console.dir(updatedGame, "inside sendPlayerMove");
-
-    return this.http.put(env.API_URL + '/games', updatedGame);
+  sendPlayerMove(gameId, gamestate) {
+   
+    let gamestate2: string = '';
+    for(let i=0; i < gamestate.length; i++){
+      gamestate2 += gamestate[i];
+    }
+    console.log(gamestate2);
+    let body = {
+      gameId: gameId,
+      gamestate: gamestate2
+    }
+    console.dir(body, "body");
+    return this.http.put(env.API_URL + '/games', body);
   }
 
   receivePlayerMove(): any {
@@ -31,14 +40,13 @@ export class GameService {
   }
 
   getAllGamesInProgress() {
-    // this.http.get(env.API_URL+'gameState')
+    //return this.http.get(env.API_URL+'gameState')
   }
 
-  getGameById(id) {
-    //this.http.get(env.API_URL+`gameState+${{id}}`)
+  getGames() {
+    return this.http.get(env.API_URL+'/games');
   }
   createNewGame(player1Id, player2Id, publicOrPrivate) {
-
     let body = {
       playerO: player1Id,
       playerX: player2Id,
@@ -47,7 +55,7 @@ export class GameService {
     console.log(body);
     console.log(JSON.stringify(body));
 
-    return this.http.post(env.API_URL + 'games', body)
+    return this.http.post(env.API_URL + 'games', body);
 
   }
   exitGame() {
