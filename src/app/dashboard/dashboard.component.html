@@ -20,7 +20,7 @@
         <br />
         <h2 class="lead">Create New game</h2>
 
-        <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+      <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
             <div class="form-group">
                 <label for="username">Enter Other Player's Username</label>
                 <input type="text" formControlName="player2username" class="form-control" />
@@ -34,6 +34,7 @@
             </div>
             <br />
 
+
             <div class="form-group">
                 <button class="btn btn-primary">New Game </button>
             </div>
@@ -42,7 +43,6 @@
             </div>
          
         </form>
-
 
         <div class="col-md-6 offset-md-3">
             <active-game-list></active-game-list>

@@ -12,7 +12,43 @@ import { User } from '../models/users';
   templateUrl: './recover-account.component.html',
   styleUrls: ['./recover-account.component.css']
 })
+
 export class RecoverAccountComponent implements OnInit {
+  registerForm: FormGroup; submitted = false;
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService) { }
+
+  ngOnInit() {
+    //work on this     
+    this.registerForm = new FormGroup({
+      username: new FormControl()
+    });
+  }
+  get f() {
+    let userValues = this.registerForm.controls;
+    console.log(userValues);
+    return userValues;
+  }
+  retrieveQuestion() {
+
+    /*     this.userService.getQuestion    */
+  }
+}
+/*
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { UserService } from './../services/user.service';
+
+@Component({
+  selector: 'recover-account',
+  templateUrl: './recover-account.component.html',
+  styleUrls: ['./recover-account.component.css']
+})
+export class RecoverAccountComponent implements OnInit {
+
   recoveryForm: FormGroup;
   submitted = false;
   question = "";
@@ -44,12 +80,12 @@ export class RecoverAccountComponent implements OnInit {
     });
   }
 
-
   get f() {
     let userValues = this.recoveryForm.controls;
     console.log(userValues);
     return userValues;
   }
+
   get e() {
     let answerValues = this.answerForm.controls;
     console.log(answerValues);
@@ -102,5 +138,5 @@ export class RecoverAccountComponent implements OnInit {
      )
     console.log(this.answerForm.controls)
   }
-
 }
+*/
