@@ -10,7 +10,7 @@ export interface IUser{
     token? :string;
     score: number;
     securityquestion: string;
-    securityAnswer: string;
+    securityanswer: string;
     avatar: string;
     retired: number;
 
