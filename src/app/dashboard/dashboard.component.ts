@@ -52,16 +52,16 @@ export class DashboardComponent implements OnInit {
 
   onCreateNewGame() {
     console.log(this.currentUser.username, 'current user name');
-    console.log(this.newGameForm.value.isPublic, "ispublic" );
+    //console.log(this.newGameForm.value.isPublic, "ispublic" );
     
 
-   let gameIsPublicValue = 0; 
-    if(this.newGameForm.value.isPublic){
+   let gameIsPublicValue = 1; 
+    /*if(this.newGameForm.value.isPublic){
       gameIsPublicValue = 1;
     }else{
       gameIsPublicValue = 0 ;
     }
-    /*
+    
     will retieve new Game view 
     newgame and navigate to new game view 
     pame in progress and spectatei

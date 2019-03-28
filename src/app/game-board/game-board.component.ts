@@ -23,14 +23,17 @@ private currentUser:User;
   ) { }
 
    board = Array(9).fill("");
+   moveNumber = 9;
 
 
   ngOnInit() {
     console.log("gamebordinit");
     this.currentUser = JSON.parse(localStorage.getItem("jwt-user"));
     this.currentGame = JSON.parse(localStorage.getItem('game'));
+    console.log(JSON.parse(localStorage.getItem('game')));
     console.log(this.currentGame.gamestate);
     this.renderGame();
+    let split = this.currentGame.gamestate.split('');
   }
 
   makeAMove($event, index) { 
@@ -39,6 +42,9 @@ private currentUser:User;
     console.log(split);
     let turn = Math.max.apply(Math, split) + 1;
     let currentUser = this.currentUser.username;
+    if(this.moveNumber < turn){
+      return;
+    }
     if(turn > 9){
       return;
     }
@@ -131,4 +137,35 @@ private currentUser:User;
    
 
   }
+  renderPartGame(event, int){
+    this.moveNumber = this.moveNumber + int;
+    if(this.moveNumber < 0){
+      this.moveNumber = 0;
+    }
+    if(this.moveNumber > 9){
+      this.moveNumber = 9;
+    }
+    let gameState = this.currentGame.gamestate.split('');
+    //get specific game from ID
+    for(let i = 0; i < gameState.length; i++) {
+      if(Number(gameState[i]) > this.moveNumber){
+        this.board[i] = "";
+        continue;
+      }
+      //console.log("inside For") 
+      if(Number(gameState[i]) == 0){
+        //console.log("0")
+        this.board[i] = "";
+        //console.log(this.board)
+      } else if (Number(gameState[i]) % 2 == 0){
+        //console.log("even");
+        this.board[i] = "O";
+        //console.log(this.board)
+      } else {
+        //console.log("odd");
+        this.board[i]= "X";
+        //console.log(this.board)
+      }
+  }
+}
 }
