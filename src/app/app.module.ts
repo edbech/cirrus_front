@@ -23,6 +23,7 @@ import { GameService } from './services/game.service';
 import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
+import { GameViewComponent } from './game-view/game-view.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HighscoresComponent } from './highscores/highscores.component';
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
+    GameViewComponent
 
   ],
   imports: [
@@ -80,6 +82,10 @@ import { HighscoresComponent } from './highscores/highscores.component';
       {
         path: 'highscores',
         component: HighscoresComponent
+      },
+      {
+        path: 'game-view',
+        component: GameViewComponent
       }
 
     ])

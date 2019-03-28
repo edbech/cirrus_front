@@ -17,5 +17,8 @@ export class GameViewComponent implements OnInit {
   ngOnInit() {
      
   }
-
+  
+  exitGame(){
+    this.gameService.exitGame();
+  }
 }

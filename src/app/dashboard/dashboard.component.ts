@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { GameService } from './../services/game.service';
 import { UserService } from './../services/user.service';
@@ -6,6 +6,7 @@ import { AuthService } from './../services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
 import { User } from './../models/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private gameService: GameService
+    private gameService: GameService, 
+    private router: Router
     
   ) { }
 
@@ -48,8 +50,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.username, 'current user name');
     console.log(this.newGameForm.value.isPublic, "ispublic" );
     
-  //let player2Id = this.users.find(u => u.username === this.newGameForm.value.player2username);
-  let gameIsPublicValue = 0; 
+   let gameIsPublicValue = 0; 
     if(this.newGameForm.value.isPublic){
       gameIsPublicValue = 1;
     }else{
@@ -63,29 +64,20 @@ export class DashboardComponent implements OnInit {
     */
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
     .subscribe(resp =>{ 
-      resp
-      })
-    
+      console.log(resp);
+      localStorage.setItem('game', JSON.stringify(resp));
+      this.router.navigate(['game-view']);
+      })  
   }
 
   logout(){
     this.authService.logout();
   }
 
-  getAllGamesForUser() {
+  getAllGames() {
     //this.gameService.getAllGamesInProgress(); 
     //display all current games in progress for user
   }
 
-  //  getAllUsers() {
-  //    this.userService.getAll().subscribe((response:any[]) =>{
-  //     if(response){
-  //      console.log("works")
-  //      this.users = response;
-        
-  //     }
-      
-  //   })
-    
-  // }
+ 
 }
