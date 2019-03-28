@@ -3,7 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from  '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { UserService } from './services/user.service';
 
@@ -28,6 +28,8 @@ import { ActiveGameListComponent } from './active-game-list/active-game-list.com
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { GameViewComponent } from './game-view/game-view.component';
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
-    GameViewComponent
+    GameViewComponent,
+    ChatroomComponent
 
   ],
   imports: [
@@ -74,20 +77,23 @@ import { GameViewComponent } from './game-view/game-view.component';
         path: 'gameBoard',
         component: GameBoardComponent
       },
-     {
+      {
         path: 'accountrecovery',
         component: RecoverAccountComponent
-      }, 
-    
-      { path: 'user-list',
-       component: UserListComponent
       },
-      { path: 'user-profile', 
-       component: UserProfileComponent 
+
+      {
+        path: 'user-list',
+        component: UserListComponent
       },
-      { path: 'reset-password', 
-       component: ResetPasswordComponent
-       },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent
+      },
       {
         path: 'active-game-list',
         component: ActiveGameListComponent
@@ -111,7 +117,7 @@ import { GameViewComponent } from './game-view/game-view.component';
     UserService,
     AuthService,
     GameService,
-    UserprofileService,  
+    UserprofileService,
     TableService,
 
     {
@@ -119,8 +125,8 @@ import { GameViewComponent } from './game-view/game-view.component';
       useClass: TokenInterceptorService,
       multi: true
     }
-],
-  
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
