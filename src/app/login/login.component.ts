@@ -11,7 +11,7 @@ import { Credentials } from '../models/credentials';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    credentialsInvalid: boolean;
+    credentialsInvalid: Boolean = false;
     credentials: Credentials;
     isAuth$ = this.authService.isAuth$;
     loginForm: FormGroup;
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
             } else {
                 //work on this do not know where to start
-                //this.credentialsInvalid = true;
+                this.credentialsInvalid = true;
             }
         });
     }

@@ -1,7 +1,7 @@
 
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { User } from './../models/users';
 import { GameService } from './../services/game.service';
 import { Game } from './../models/game';
 
@@ -15,6 +15,7 @@ export class GameBoardComponent implements OnInit {
 
 private gameArray = Array(9).fill(0)
 private currentGame: Game;
+private currentUser:User;
 
   constructor(
     private gameService: GameService,
@@ -22,23 +23,72 @@ private currentGame: Game;
   ) { }
 
    board = Array(9).fill("");
+   moveNumber = 9;
 
 
   ngOnInit() {
-    
+    console.log("gamebordinit");
+    this.currentUser = JSON.parse(localStorage.getItem("jwt-user"));
+    this.currentGame = JSON.parse(localStorage.getItem('game'));
+    console.log(JSON.parse(localStorage.getItem('game')));
+    console.log(this.currentGame.gamestate);
+    this.renderGame();
+    let split = this.currentGame.gamestate.split('');
   }
 
-  makeAMove($event, index) {
-   // get current value of the 
-      console.log("inside makeAMove");
-      if(!this.checkTurn()){
-        //return;
-       }
-    //get max from array
-    let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
-    if(turn > 9){
+  makeAMove($event, index) { 
+    console.log("inside makeAMove");
+    let split = this.currentGame.gamestate.split('');
+    console.log(split);
+    let turn = Math.max.apply(Math, split) + 1;
+    let currentUser = this.currentUser.username;
+    if(this.moveNumber < turn){
+      console.log("Move<turn");
       return;
     }
+    if(turn > 9){
+      console.log("turn>9");
+      return;
+    }
+    if(this.currentGame.result != "INPROGRESS"){
+      console.log("Not Inprogress");
+      return;
+    }
+    if(turn%2 == 1){
+      if(currentUser != this.currentGame.playerX){
+        console.log("not player X turn");
+        return;
+      }
+    } else {
+      if(currentUser != this.currentGame.playerO){
+        console.log("not player O turn");
+       return;
+      }
+    }
+    if(this.board[index] == ""){
+      split[index] = turn;
+      this.currentGame.gamestate = split.join('');
+      console.log(this.currentGame.gamestate);
+      this.gameService.sendPlayerMove(this.currentGame.gameId, this.currentGame.gamestate).subscribe(resp=>{
+        if(resp){
+          this.renderGame();
+          //remove old game object is resp successfull and add new game state to local storage
+          //localStorage.removeItem('game');
+          //localStorage.setItem('game', JSON.stringify(this.currentGame ))
+           //this.router.navigate(['/dashboard']);
+        }
+        //have notification that move was not sent successfully
+  
+      });
+    }
+
+
+    /*
+   // get current value of the 
+      
+      
+    //get max from array
+    
     console.log(turn, "turn");
     console.log(index); 
     console.dir(this.gameArray);
@@ -65,58 +115,62 @@ private currentGame: Game;
 
     })
      
-    }
+    }*/
   }
 
-  refreshBoard() {
-    // this.gameService.getBoard()
-  }
- 
-  //Check turn
-  checkTurn() { // returns boolian, true if it is the current user's turn
-    //this.gameArray
-    let turn = Math.max.apply(Math, this.gameArray.map(o => { return o })) + 1;
-    console.log(turn, "turn");
-    if(turn%2 == 0){
-      return false;
-    }
-    return true;
-    
-    /*find max value of gameArray 
-    if even X, else O
-    check if user matches if user is player X
-    return true if X 
-    else return false O's turn 
-    
-    if(userIsX && max % 2 == 0) {can play/return true}
-    if(!userIsX && max % 2 == 1) {can play/return true}
-    can't play return false
-    
-    */
-  }
   //RenderPlayedGame
-  renderGame(gameState) {
-
-    console.log(gameState.length,"in renderGame");
-    console.log(this.board);
+  renderGame() {
+    let gameState = this.currentGame.gamestate.split('');
     //get specific game from ID
-    for(let i = 0; i < gameState.length; i++) { 
+    for(let i = 0; i < gameState.length; i++) {
+      
       //console.log("inside For") 
-      if(gameState[i] == 0){
+      if(Number(gameState[i]) == 0){
         //console.log("0")
-        this.board[i] = ""
+        this.board[i] = "";
         //console.log(this.board)
-      } else if (gameState[i] % 2 == 0){
+      } else if (Number(gameState[i]) % 2 == 0){
         //console.log("even");
-        this.board[i] = "O"
+        this.board[i] = "O";
         //console.log(this.board)
       } else {
         //console.log("odd");
-        this.board[i]= "X"
+        this.board[i]= "X";
         //console.log(this.board)
       }
     }
    
 
   }
+  renderPartGame(event, int){
+    this.moveNumber = this.moveNumber + int;
+    if(this.moveNumber < 0){
+      this.moveNumber = 0;
+    }
+    if(this.moveNumber > 9){
+      this.moveNumber = 9;
+    }
+    let gameState = this.currentGame.gamestate.split('');
+    //get specific game from ID
+    for(let i = 0; i < gameState.length; i++) {
+      if(Number(gameState[i]) > this.moveNumber){
+        this.board[i] = "";
+        continue;
+      }
+      //console.log("inside For") 
+      if(Number(gameState[i]) == 0){
+        //console.log("0")
+        this.board[i] = "";
+        //console.log(this.board)
+      } else if (Number(gameState[i]) % 2 == 0){
+        //console.log("even");
+        this.board[i] = "O";
+        //console.log(this.board)
+      } else {
+        //console.log("odd");
+        this.board[i]= "X";
+        //console.log(this.board)
+      }
+  }
+}
 }

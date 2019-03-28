@@ -1,24 +1,28 @@
-<!-- <table>
+<table>
   <thead>
     <tr>
       <th>Game Id</th>
       <th>PlayerX</th>
       <th>PlayerO</th>
-      <th>In progress</th>
-      <th>Completed</th>
       <th>Result</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let game of games">
-      <td>{{ this.game.id }}</td>
+      <td>{{ this.game.gameId }}</td>
       <td>{{ this.game.playerX}}</td>
       <td>{{ this.game.playerO }}</td>
-      <td>{{ this.game.started }}</td>
-      <td>{{ this.game.finished }}</td>
-      <td>{{ this.game.finished }}</td>
-
+      <td>{{ this.game.result }}</td>
     </tr>
   </tbody>
-</table> -->
+</table>
+<form [formGroup]="gameForm" (ngSubmit)="goToGame()">
+<div class="form-group">
+  <label for="gameid">Enter game ID you want to play</label>
+  <input type="number" formControlName="gameid" class="form-control" />
+</div>
+<div class="form-group">
+  <button class="btn btn-primary">Play Game </button>
+</div>
+</form>
 <p>For Games See console</p>

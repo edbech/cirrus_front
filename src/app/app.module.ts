@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -71,17 +71,23 @@ import { GameViewComponent } from './game-view/game-view.component';
         component: DashboardComponent
       },
       {
-        path: 'game',
+        path: 'gameBoard',
         component: GameBoardComponent
       },
-     /* {
+     {
         path: 'accountrecovery',
         component: RecoverAccountComponent
-      }, */
-      { path: 'recover-account', component: RecoverAccountComponent },
-      { path: 'user-list', component: UserListComponent },
-      { path: 'user-profile', component: UserProfileComponent },
-      { path: 'reset-password', component: ResetPasswordComponent },
+      }, 
+    
+      { path: 'user-list',
+       component: UserListComponent
+      },
+      { path: 'user-profile', 
+       component: UserProfileComponent 
+      },
+      { path: 'reset-password', 
+       component: ResetPasswordComponent
+       },
       {
         path: 'active-game-list',
         component: ActiveGameListComponent

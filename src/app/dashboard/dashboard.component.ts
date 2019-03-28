@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './../models/users';
 import { Router } from '@angular/router';
 
+import { Game } from '../models/game';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
   currentUser:User;
   users: User[];
   newGameForm: FormGroup;
+  currentGame:Game;
   usernameInvalid:boolean;
 
   constructor(
@@ -42,26 +45,28 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-       isPublic: ['']
+        
+        
     });
   }
 
   onCreateNewGame() {
     console.log(this.currentUser.username, 'current user name');
-    console.log(this.newGameForm.value.isPublic, "ispublic" );
+    //console.log(this.newGameForm.value.isPublic, "ispublic" );
     
-   let gameIsPublicValue = 0; 
-    if(this.newGameForm.value.isPublic){
+
+   let gameIsPublicValue = 1; 
+    /*if(this.newGameForm.value.isPublic){
       gameIsPublicValue = 1;
     }else{
       gameIsPublicValue = 0 ;
     }
-    /*
+    
     will retieve new Game view 
     newgame and navigate to new game view 
     pame in progress and spectatei
     If a player in the game allow to make move
-    */
+    */ 
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
     .subscribe(resp =>{ 
       console.log(resp);

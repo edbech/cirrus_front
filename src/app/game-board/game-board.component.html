@@ -23,3 +23,8 @@
       <td (click)="makeAMove($event, 8)">{{board[8]}}</td>
     </tr>
   </table>
+  <div id="ForwardAndBackButtons">
+  <button (click)="renderPartGame($event, -1)">Back</button>
+  <button (click)="renderPartGame($event, 1)">Forward</button>
+  <p>{{moveNumber}}</p>
+</div>
