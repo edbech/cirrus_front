@@ -69,6 +69,7 @@ export class AuthService {
   logout() {
     if(localStorage.getItem('jwt-user') || localStorage.getItem('jwt')) {
       localStorage.removeItem('jwt');
+      localStorage.removeItem('jwt-body');
       localStorage.removeItem('jwt-user');
     
     }

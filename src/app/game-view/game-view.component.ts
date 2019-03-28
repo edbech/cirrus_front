@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../models/game';
+
 
 @Component({
   selector: 'app-game-view',
@@ -9,7 +11,10 @@ export class GameViewComponent implements OnInit {
 
   constructor() { }
 
+  private currentGame:Game;
+
   ngOnInit() {
+    localStorage.getItem('currentGame');
   }
 
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -27,6 +27,7 @@ import { UserprofileService } from './Services/userprofile.service';
 import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
+import { GameViewComponent } from './game-view/game-view.component';
 
 @NgModule({
   declarations: [
@@ -69,17 +70,23 @@ import { HighscoresComponent } from './highscores/highscores.component';
         component: DashboardComponent
       },
       {
-        path: 'game',
+        path: 'gameBoard',
         component: GameBoardComponent
       },
-     /* {
+     {
         path: 'accountrecovery',
         component: RecoverAccountComponent
-      }, */
-      { path: 'recover-account', component: RecoverAccountComponent },
-      { path: 'user-list', component: UserListComponent },
-      { path: 'user-profile', component: UserProfileComponent },
-      { path: 'reset-password', component: ResetPasswordComponent },
+      }, 
+    
+      { path: 'user-list',
+       component: UserListComponent
+      },
+      { path: 'user-profile', 
+       component: UserProfileComponent 
+      },
+      { path: 'reset-password', 
+       component: ResetPasswordComponent
+       },
       {
         path: 'active-game-list',
         component: ActiveGameListComponent
@@ -91,6 +98,9 @@ import { HighscoresComponent } from './highscores/highscores.component';
       {
         path: 'highscores',
         component: HighscoresComponent
+      },
+      {path: 'game-view',
+       component: GameViewComponent
       }
 
     ])

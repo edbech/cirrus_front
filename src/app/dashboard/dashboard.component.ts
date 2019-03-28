@@ -6,6 +6,8 @@ import { AuthService } from './../services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
 import { User } from './../models/users';
+import { Router } from '@angular/router';
+import { Game } from '../models/game';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,13 +18,15 @@ export class DashboardComponent implements OnInit {
   currentUser:User
   users: User[];
   newGameForm: FormGroup;
+  currentGame:Game;
   usernameInvalid:boolean;
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private gameService: GameService
+    private gameService: GameService,
+    private router: Router
     
   ) { }
 
@@ -40,7 +44,8 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
-       isPublic: ['']
+       
+        
     });
   }
 
@@ -48,8 +53,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.currentUser.username, 'current user name');
     console.log(this.newGameForm.value.isPublic, "ispublic" );
     
-  let player2Id = this.users.find(u => u.username === this.newGameForm.value.player2username);
-  let gameIsPublicValue = 0; 
+    let gameIsPublicValue = 0; 
     if(this.newGameForm.value.isPublic){
       gameIsPublicValue = 1;
     }else{
@@ -62,7 +66,15 @@ export class DashboardComponent implements OnInit {
     If a player in the game allow to make move
     */
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
-    //.subscribe(resp =>{   
+    .subscribe((resp : any) =>{  
+      // resp.get game id
+      this.currentGame = resp;
+      localStorage.setItem('currentGame',this.currentGame.playerO);
+      // console.log(resp);
+      this.router.navigate(['/gameview'])
+
+      //redirect to gameview/gameid
+     })
     
   }
 
