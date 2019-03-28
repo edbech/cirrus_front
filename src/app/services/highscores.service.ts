@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class HighscoresService {
 
   constructor(private http: HttpClient) { }
-  url = 'http://project2cirrus-env-2.diziubrss3.us-east-2.elasticbeanstalk.com';
+  url = 'http://project2cirrus-env-2.diziubrss3.us-east-2.elasticbeanstalk.com/';
   getData() {
     return this
       .http
