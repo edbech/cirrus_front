@@ -181,4 +181,8 @@ toggleCute(){
     this.renderPartGame(0, 0);
   }
 }
+exitGame(){
+  this.gameService.exitGame();
+
+}
 }

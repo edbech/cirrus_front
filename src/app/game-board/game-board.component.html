@@ -1,16 +1,15 @@
-<p>
-  game-board works!
-</p>
-
-
-
-<div id="ForwardAndBackButtons">
-    <span>Move Number: {{moveNumber}}</span>
-  <button (click)="renderPartGame($event, -1)">Back</button>
-  <button (click)="renderPartGame($event, 1)">Forward</button>
+<div class="btn-div d-flex justify-content-center align-content-center">
+  <button (click)="toggleCute()" class="btn mybtn btn-primary">ToggleCute</button>
+  <button (click)="refresh()" class="btn mybtn btn-primary"> Refresh</button>
+  <button (click)="exitGame()" class="btn mybtn btn-primary">Exit Game</button>
 </div>
-<button (click)="toggleCute()">ToggleCute</button>
-<button (click)="refresh()" class="btn btn-primary"> Refresh</button>
+<div class="d-flex justify-content-center"><span>Move Number: {{moveNumber}}</span></div>
+<div id="ForwardAndBackButtons" class="d-flex justify-content-center align-content-center">
+  <button (click)="renderPartGame($event, -1)" class="btn mybtn btn-primary">Back</button>
+  <button (click)="renderPartGame($event, 1)" class="btn mybtn btn-primary">Forward</button>
+</div>
+
+
 <div class="table-wrapper" >
   <table>
     <tr>
@@ -29,3 +28,4 @@
       <td (click)="makeAMove($event, 8)">{{board[8]}}<img src={{img[8]}} /></td>
     </tr>
   </table>
+</div>
