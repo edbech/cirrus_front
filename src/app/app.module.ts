@@ -7,11 +7,9 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { UserService } from './services/user.service';
-
 import { AuthService } from './services/auth.service';
 import { TableService } from './active-game-list/table.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -26,6 +24,7 @@ import { ActiveGameListComponent } from './active-game-list/active-game-list.com
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
+import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component'
 
 
 @NgModule({
@@ -44,7 +43,7 @@ import { GameViewComponent } from './game-view/game-view.component';
     HighscoresComponent,
     GameViewComponent,
     LearnToPlayComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -76,6 +75,7 @@ import { GameViewComponent } from './game-view/game-view.component';
         path: 'accountrecovery',
         component: RecoverAccountComponent
       },
+
       {
         path: 'user-profile',
         component: UserProfileComponent
@@ -100,7 +100,7 @@ import { GameViewComponent } from './game-view/game-view.component';
         path: 'learn-to-play',
         component: LearnToPlayComponent
       }
-
+      
     ])
   ],
   providers: [
