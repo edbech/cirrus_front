@@ -26,7 +26,6 @@ import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
