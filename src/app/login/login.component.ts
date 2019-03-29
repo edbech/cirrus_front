@@ -32,15 +32,11 @@ export class LoginComponent implements OnInit {
         return this.loginForm.controls;
     };
     onLogin() {
-        console.log(this.loginForm.value);
-        this.authService.login(this.loginForm.value);
-        this.isAuth$.subscribe(isAuth => {
-            console.log(isAuth);
+        this.authService.login(this.loginForm.value).then(isAuth => {
             if (isAuth) {
                 this.credentialsInvalid = false;
                 this.router.navigate(['/dashboard']);
             } else {
-                //work on this do not know where to start
                 this.credentialsInvalid = true;
             }
         });

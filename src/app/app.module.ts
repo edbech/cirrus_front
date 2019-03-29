@@ -1,3 +1,4 @@
+import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,12 +20,12 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserprofileService } from './Services/userprofile.service';
 import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
 import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component'
+
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component'
         path: 'user-profile',
         component: UserProfileComponent
       },
-        {
+      {
         path: 'active-game-list',
         component: ActiveGameListComponent
       },
@@ -106,7 +107,6 @@ import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component'
     UserService,
     AuthService,
     GameService,
-    UserprofileService,
     TableService,
 
     {

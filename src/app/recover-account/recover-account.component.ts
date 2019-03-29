@@ -47,22 +47,17 @@ export class RecoverAccountComponent implements OnInit {
 
   get f() {
     let userValues = this.recoveryForm.controls;
-    console.log(userValues);
     return userValues;
   }
   get e() {
     let answerValues = this.answerForm.controls;
-    console.log(answerValues);
     return answerValues;
   }
 
   onRetrieveQuestion() {
-    console.log(this.recoveryForm.value)
     
     this.userService.getRecoveryQuestion(this.recoveryForm.value)
       .subscribe((resp : any)=>{
-        console.log("check1");
-        console.log(resp);
         if(resp){
           this.question = resp.securityquestion;
           this.usernameInvalid = false;
@@ -73,23 +68,14 @@ export class RecoverAccountComponent implements OnInit {
   }
 
   onAnswerQuestion() {
-    console.log("inside onAnswer")
-    console.log(this.recoveryForm.value);
     let username = this.recoveryForm.value;
      this.userService.getRecoveryAnswer(username,this.answerForm.value).subscribe(
       (resp : any) =>{
-         console.dir(resp);
          if(resp){
           this.user = resp;
-          console.log(this.user);
-          console.log("Here");
+
           this.correctAnswer = true;
-          // body.username = this.user.username;
-          // body.password = this.user.password;
-          console.log(this.user.password);
-          console.log(this.user.username);
           let body = new Credentials(this.user.username, this.user.password);
-          console.log(body);
 
           //{"username":"Gabe3","password":"Zapato"} 
           this.authService.login(body);

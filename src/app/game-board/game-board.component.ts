@@ -138,28 +138,21 @@ private isCute: boolean = false;
         this.img[i] = "";
         continue;
       }
-      //console.log("inside For") 
       if(Number(gameState[i]) == 0){
-        //console.log("0")
         this.board[i] = "";
         this.img[i] = "";
-        //console.log(this.board)
       } else if (Number(gameState[i]) % 2 == 0){
-        //console.log("even");
         this.board[i] = "O";
         if(this.isCute){this.gameService.getDog().subscribe(resp => {
           this.board[i] = ""
           this.img[i] = resp[0].url;
         });}
-        //console.log(this.board)
       } else {
-        //console.log("odd");
         this.board[i]= "X";
         if(this.isCute){this.gameService.getCat().subscribe(resp => {
           this.board[i]= "";
           this.img[i] = resp[0].url;
         });}
-        //console.log(this.board)
       }
   }
 }
@@ -180,5 +173,9 @@ toggleCute(){
     this.isCute = true;
     this.renderPartGame(0, 0);
   }
+}
+exitGame(){
+  this.gameService.exitGame();
+
 }
 }
