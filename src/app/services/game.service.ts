@@ -25,7 +25,6 @@ export class GameService {
     for (let i = 0; i < gamestate.length; i++) {
       gamestate2 += gamestate[i];
     }
-    console.log(gamestate2);
     let body = {
       gameId: gameId,
       gamestate: gamestate2
@@ -39,7 +38,6 @@ export class GameService {
   }
 
   getAllGamesInProgress() {
-    //return this.http.get(env.API_URL+'gameState')
   }
 
   getGames() {
@@ -56,8 +54,6 @@ export class GameService {
       playerX: player2Id,
       ispublic: publicOrPrivate
     }
-    console.log(body);
-    console.log(JSON.stringify(body));
 
     return this.http.post(env.API_URL + 'games', body);
 

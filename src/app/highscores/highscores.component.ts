@@ -20,8 +20,6 @@ export class HighscoresComponent implements OnInit {
 
    
     })
-
- //   console.log("this is the users: *****    "+JSON.parse(data));
   }
   
  

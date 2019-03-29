@@ -19,7 +19,7 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  register(user: User) {
+  register(user:User) {
     return this.http.post(env.API_URL + `/users/`, user);
   }
 
@@ -33,7 +33,6 @@ export class UserService {
   
   getRecoveryQuestion(username){
     return this.http.post(env.API_URL +'users/recoveryquestion/',username);
-    //return question
     
   }
   getRecoveryAnswer(username,securityanswer){

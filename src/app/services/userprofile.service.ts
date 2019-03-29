@@ -10,7 +10,6 @@ import { IUser } from '../models/user';
 export class UserprofileService {
   
 
-  //private  API_URL: string ='localhost:8080/cirrus-back/users';
  
   private  API_URL: string ='http://project2cirrus-env-2.diziubrss3.us-east-2.elasticbeanstalk.com/users/';
 

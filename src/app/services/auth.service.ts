@@ -60,12 +60,6 @@ export class AuthService {
       this.isAuth = false;
       return false;
      }    
-    //      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('jwt-user')));
-    //      console.dir(this.currentUserSubject.next)
-    //      console.dir(this.currentUserSubject)
-    //      this.currentUser = this.currentUserSubject.asObservable();
-    //      console.dir(credentialsJson,localStorage.getItem('jwt'),localStorage.getItem('jwt-user') )
-    //      console.dir(this.currentUser);
   }
 
   logout() {
