@@ -22,9 +22,7 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { UserprofileService } from './Services/userprofile.service';
 import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
@@ -42,7 +40,6 @@ import { GameViewComponent } from './game-view/game-view.component';
     GameBoardComponent,
     RecoverAccountComponent,
     UserProfileComponent,
-    UserListComponent,
     ResetPasswordComponent,
     ActiveGameListComponent,
     UpdateAccountComponent,
@@ -81,10 +78,6 @@ import { GameViewComponent } from './game-view/game-view.component';
         component: RecoverAccountComponent
       },
       {
-        path: 'user-list',
-        component: UserListComponent
-      },
-      {
         path: 'user-profile',
         component: UserProfileComponent
       },
@@ -119,7 +112,6 @@ import { GameViewComponent } from './game-view/game-view.component';
     UserService,
     AuthService,
     GameService,
-    UserprofileService,
     TableService,
 
     {
