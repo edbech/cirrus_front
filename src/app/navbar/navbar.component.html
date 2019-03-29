@@ -1,4 +1,13 @@
-<p>navbar</p>
-<p>More nav things</p>
-
-
+<div class="sidenav">
+  <button class="btn btn-warn btn-outline-dark my-text" routerLink="/active-game-list">View your games</button>
+  <br/>
+  <button class="btn btn-warn btn-outline-dark my-text"routerLink="/highscores">View highscores!</button>
+  <br/>
+  <button class="btn btn-warn btn-outline-dark my-text"routerLink="/update-account">Change account details</button>
+  <br/>
+  <button class="btn btn-warn btn-outline-dark my-text"routerLink="/chatroom">Talk to me</button>
+  <br/>
+  <button class="btn btn-warn btn-outline-dark my-text"(click)="gameService.getAllGamesInProgress()" > See All games in Progress</button>
+  <br/>
+  <button (click)="logout()" class="btn btn-warn btn-outline-danger my-text"> Logout</button>
+</div>
