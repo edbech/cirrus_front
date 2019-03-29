@@ -1,50 +1,47 @@
-
 <div class="form-controler">
 
-    
 
-<body id="body">
 
-        <br>
-        <br>
-        <br>
-        
-      <div id="scorelist" class="container">
-          
-      <h1>Welecome  {{ this.userInfo.username }} </h1>
+  <body id="body">
+
+    <br>
+    <br>
+    <br>
+
+    <div id="scorelist" class="container">
+
+      <h1>Welcome {{ this.userInfo.username }} </h1>
       <br>
       <table id="table" class="table">
-        
-        <tr  class="row" >
-          <td class="col"> User id: {{ this.userInfo.userId }} </td> 
-          <td class="col"> Score: {{ this.userInfo.score }} </td> 
-          <td class="col"> Number of games: {{ this.userInfo.retired }} </td>     
+
+        <tr class="row">
+          <td class="col"> User ID: {{ this.userInfo.userId }} </td>
+          <td class="col"> Score: {{ this.userInfo.score }} </td>
+          <td class="col"> Number of games: {{ this.userInfo.retired }} </td>
         </tr>
 
-       
-                 <label class="col-md-12">{{ this.userInfo.aboutMe }} </label> 
-              
+
+        <label class="col-md-12">{{ this.userInfo.aboutMe }} </label>
+
       </table>
-      </div>
-    </body>
-  
-  
-  
-  
-  
-          <label for="user-id" class="sr-only">Id</label>
-          <label #userid id="user-id" type="text" class="form-control" >{{ this.userInfo.userId }}</label>
-          <br>
-          <!-- User Score-->
-          <label for="user-score" class="form-control">User score: {{ this.userInfo.score  }}</label>
-          <br>
-                 
-          <label for="user-name" class="form-control">Username: {{this.userInfo.username}}</label>
-          <br>
-          <textarea for="user-aboutme" class="form-control">About me: {{ this.userInfo.aboutMe }}</textarea>
-          <br>
-        <label for="user-retired" class="form-control">Retired: {{ this.userInfo.retired}}</label>
-        <br>
-       </div>
-        
-        
+    </div>
+  </body>
+
+
+
+
+
+  <label for="user-id" class="sr-only">Id</label>
+  <label #userid id="user-id" type="text" class="form-control">{{ this.userInfo.userId }}</label>
+  <br>
+  <!-- User Score-->
+  <label for="user-score" class="form-control">User score: {{ this.userInfo.score  }}</label>
+  <br>
+
+  <label for="user-name" class="form-control">Username: {{this.userInfo.username}}</label>
+  <br>
+  <textarea for="user-aboutme" class="form-control">About me: {{ this.userInfo.aboutMe }}</textarea>
+  <br>
+  <label for="user-retired" class="form-control">Retired: {{ this.userInfo.retired}}</label>
+  <br>
+</div>

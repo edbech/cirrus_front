@@ -22,7 +22,6 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { GameService } from './services/game.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ActiveGameListComponent } from './active-game-list/active-game-list.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
@@ -40,7 +39,6 @@ import { GameViewComponent } from './game-view/game-view.component';
     GameBoardComponent,
     RecoverAccountComponent,
     UserProfileComponent,
-    ResetPasswordComponent,
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
@@ -81,10 +79,6 @@ import { GameViewComponent } from './game-view/game-view.component';
       {
         path: 'user-profile',
         component: UserProfileComponent
-      },
-      {
-        path: 'reset-password',
-        component: ResetPasswordComponent
       },
       {
         path: 'active-game-list',
