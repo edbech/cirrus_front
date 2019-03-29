@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+img{
+    max-height: 300px;
+    max-width: 300px;
+}
+
+body{
+    background-color: lightcyan;
+ }

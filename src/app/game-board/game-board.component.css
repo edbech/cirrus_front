@@ -1,0 +1,22 @@
+table{
+   
+   border: solid 3px;
+   float:left;
+   font: 50px sans-serif;
+   align-items: center;
+
+}
+tr{
+   border: solid 3px;
+   align-content: center;
+}
+td{
+   width: 200px;
+   height: 200px;
+   border: solid 3px;
+   text-align: center;
+}
+
+.mybtn {
+   margin: 10px;
+}

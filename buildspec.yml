@@ -1,0 +1,27 @@
+version: 0.2
+environment_variables:
+    plaintext:
+        S3_BUCKET: "cirrus-x"
+        BUILD_ENV: "prod"
+phases:
+    install:
+        commands:
+            - echo Installing source NPM dependencies...
+            - npm install
+            - npm install -g @angular/cli
+    build:
+        commands:
+            - echo Build started on `date`
+            - ng build --prod
+    post_build:
+         commands:
+            - aws s3 sync --delete dist s3://cirrus-x
+            - echo Build completed on `date`
+            - pwd
+            - ls
+artifacts:
+    files:
+        - ls
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes

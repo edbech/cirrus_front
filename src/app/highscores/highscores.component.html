@@ -1,0 +1,30 @@
+
+
+<body id="body">
+
+      <br>
+      <br>
+      <br>
+      
+    <div id="scorelist" class="container">
+        
+    <h1>HIGH SCORES</h1>
+    <br>
+    <table id="table" class="table">
+    
+      <tr class="row">
+        <th class="col" >Username</th>
+        <th class="col">Score</th>
+      </tr>
+
+      <tr  class="row" *ngFor="let user of users">
+        <td class="col"> {{ this.user[0] }} </td> 
+        <td  class="col"> {{this.user[1]}}</td>  
+      </tr>
+    </table>
+    </div>
+  </body>
+
+
+
+

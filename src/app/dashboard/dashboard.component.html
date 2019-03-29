@@ -1,0 +1,22 @@
+<navbar></navbar>
+
+<div>
+    <div class="col-md-6 offset-md-3" id="newgame">
+        <form [formGroup]="newGameForm" (ngSubmit)="onCreateNewGame()">
+            <h2 class="lead">Create New game</h2>
+            <div class="form-group">
+                <label for="username">Enter Other Player's Username</label>
+                <input type="text" formControlName="player2username" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">New Game </button>
+            </div>
+            <div *ngIf="usernameInvalid" class="alert alert-danger text-center" id="alert-msg" role="alert">
+                Invalid Credentials!
+            </div>
+        </form>
+    </div>
+    <br/>
+    <div class="col-md-6 offset-md-3">
+        <active-game-list></active-game-list>
+    </div>

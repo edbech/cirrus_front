@@ -1,0 +1,31 @@
+<div class="btn-div d-flex justify-content-center align-content-center">
+  <button (click)="toggleCute()" class="btn mybtn btn-primary">ToggleCute</button>
+  <button (click)="refresh()" class="btn mybtn btn-primary"> Refresh</button>
+  <button (click)="exitGame()" class="btn mybtn btn-primary">Exit Game</button>
+</div>
+<div class="d-flex justify-content-center"><span>Move Number: {{moveNumber}}</span></div>
+<div id="ForwardAndBackButtons" class="d-flex justify-content-center align-content-center">
+  <button (click)="renderPartGame($event, -1)" class="btn mybtn btn-primary">Back</button>
+  <button (click)="renderPartGame($event, 1)" class="btn mybtn btn-primary">Forward</button>
+</div>
+
+
+<div class="table-wrapper" >
+  <table>
+    <tr>
+      <td (click)="makeAMove($event, 0)">{{board[0]}}<img src={{img[0]}} /></td>
+      <td (click)="makeAMove($event, 1)">{{board[1]}}<img src={{img[1]}} /></td>
+      <td (click)="makeAMove($event, 2)">{{board[2]}}<img src={{img[2]}} /></td>
+    </tr>
+    <tr>
+      <td (click)="makeAMove($event, 3)">{{board[3]}}<img src={{img[3]}} /></td>
+      <td (click)="makeAMove($event, 4)">{{board[4]}}<img src={{img[4]}} /></td>
+      <td (click)="makeAMove($event, 5)">{{board[5]}}<img src={{img[5]}} /></td>
+    </tr>
+    <tr>
+      <td (click)="makeAMove($event, 6)">{{board[6]}}<img src={{img[6]}} /></td>
+      <td (click)="makeAMove($event, 7)">{{board[7]}}<img src={{img[7]}} /></td>
+      <td (click)="makeAMove($event, 8)">{{board[8]}}<img src={{img[8]}} /></td>
+    </tr>
+  </table>
+</div>
