@@ -28,7 +28,6 @@ import { ActiveGameListComponent } from './active-game-list/active-game-list.com
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
-import { ChatroomComponent } from './chatroom/chatroom.component';
 
 
 @NgModule({
@@ -47,9 +46,7 @@ import { ChatroomComponent } from './chatroom/chatroom.component';
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
-    GameViewComponent,
-    ChatroomComponent
-
+    GameViewComponent
   ],
   imports: [
     BrowserModule,
