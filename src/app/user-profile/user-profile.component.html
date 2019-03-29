@@ -1,36 +1,50 @@
-<div id="userprofile-form" class="form-control">
-  <h1 class="h3 mb-3 font-weight-normal">User Profile</h1>
 
- <!-- User Avatar-->
- <label for="user-avatar" class="sr-only">Avatar:</label>
- <img  id="user-avatar" class="form-control"  name="avatar">
- <br>
+<div class="form-controler">
 
+    
 
-<!-- User Retired-->
-<label for="user-retired" class="sr-only">Retired:</label>
-<label #userretired id="user-retired" type="text" class="form-control"  *ngFor="let user of users">{{ user.retired }}</label>
-<br>
-  <br>
-  <ul>
+<body id="body">
 
-      <h2>{{ users.length }} users profile</h2>
-    <li *ngFor="let user of users">
-      {{ user.id }}
-      {{ user.email }}
-    </li>
-   
-  </ul> 
+        <br>
+        <br>
+        <br>
+        
+      <div id="scorelist" class="container">
+          
+      <h1>Welecome  {{ this.userInfo.username }} </h1>
+      <br>
+      <table id="table" class="table">
+        
+        <tr  class="row" >
+          <td class="col"> User id: {{ this.userInfo.userId }} </td> 
+          <td class="col"> Score: {{ this.userInfo.score }} </td> 
+          <td class="col"> Number of games: {{ this.userInfo.retired }} </td>     
+        </tr>
 
- <!-- User Name
- <label for="user-name"  class="sr-only">Username</label>
- <input  id="user-name" value=" {{ user.username }}" type="text" class="form-control" >
- <br><br><br>
- -->
-
- <h2>GET</h2>
-Name :<input type="text" (keyup)="onNameKeyUp($event)">
-<button (click)="getUser()">Get Profile</button>
-<br>
-  <p class="mt-5 mb-3 text-muted">&copy;  Cirrus 2019</p>
-</div>
+       
+                 <label class="col-md-12">{{ this.userInfo.aboutMe }} </label> 
+              
+      </table>
+      </div>
+    </body>
+  
+  
+  
+  
+  
+          <label for="user-id" class="sr-only">Id</label>
+          <label #userid id="user-id" type="text" class="form-control" >{{ this.userInfo.userId }}</label>
+          <br>
+          <!-- User Score-->
+          <label for="user-score" class="form-control">User score: {{ this.userInfo.score  }}</label>
+          <br>
+                 
+          <label for="user-name" class="form-control">Username: {{this.userInfo.username}}</label>
+          <br>
+          <textarea for="user-aboutme" class="form-control">About me: {{ this.userInfo.aboutMe }}</textarea>
+          <br>
+        <label for="user-retired" class="form-control">Retired: {{ this.userInfo.retired}}</label>
+        <br>
+       </div>
+        
+        
