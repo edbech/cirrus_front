@@ -11,7 +11,7 @@ import { User } from '../models/users';
 export class UserProfileComponent implements OnInit {
 
  private user:User;
- private userInfo;
+ public userInfo;
  
 constructor(private userService: UserService) { }
 
