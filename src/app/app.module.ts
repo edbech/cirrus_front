@@ -1,3 +1,4 @@
+import { LearnToPlayComponent } from './learn-to-play/learn-to-play.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +47,7 @@ import { GameViewComponent } from './game-view/game-view.component';
     UpdateAccountComponent,
     HighscoresComponent,
     GameViewComponent
-
+    
   ],
   imports: [
     BrowserModule,
@@ -78,7 +79,6 @@ import { GameViewComponent } from './game-view/game-view.component';
         path: 'accountrecovery',
         component: RecoverAccountComponent
       },
-
       {
         path: 'user-list',
         component: UserListComponent
@@ -106,6 +106,10 @@ import { GameViewComponent } from './game-view/game-view.component';
       {
         path: 'game-view',
         component: GameViewComponent
+      },
+      {
+        path: 'learn-to-play',
+        component: LearnToPlayComponent
       }
 
     ])

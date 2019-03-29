@@ -32,17 +32,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    // this.userService.getAll().subscribe((response:any[]) =>{
-    //   if(response){
-    //    console.log("works")
-    //    this.users = response;
-    //    console.log(this.users)
-    //   }})
     this.currentUser = JSON.parse(localStorage.getItem("jwt-user"));
-    console.log(this.currentUser.userId);
-    console.log(this.currentUser.username);
-    console.log(this.currentUser.password);
       this.newGameForm = this.formBuilder.group({
         player2username: [''],
         
@@ -51,17 +41,8 @@ export class DashboardComponent implements OnInit {
   }
 
   onCreateNewGame() {
-    console.log(this.currentUser.username, 'current user name');
-    //console.log(this.newGameForm.value.isPublic, "ispublic" );
-    
-
    let gameIsPublicValue = 1; 
-    /*if(this.newGameForm.value.isPublic){
-      gameIsPublicValue = 1;
-    }else{
-      gameIsPublicValue = 0 ;
-    }
-    
+    /*   
     will retieve new Game view 
     newgame and navigate to new game view 
     pame in progress and spectatei
@@ -69,7 +50,6 @@ export class DashboardComponent implements OnInit {
     */ 
     this.gameService.createNewGame(this.currentUser.username,this.newGameForm.value.player2username, gameIsPublicValue )
     .subscribe(resp =>{ 
-      console.log(resp);
       localStorage.setItem('game', JSON.stringify(resp));
       this.router.navigate(['game-view']);
       })  
