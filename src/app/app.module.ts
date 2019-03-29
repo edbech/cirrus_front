@@ -28,6 +28,7 @@ import { UpdateAccountComponent } from './update-account/update-account.componen
 import { HighscoresComponent } from './highscores/highscores.component';
 import { GameViewComponent } from './game-view/game-view.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { GameViewComponent } from './game-view/game-view.component';
     ActiveGameListComponent,
     UpdateAccountComponent,
     HighscoresComponent,
-    GameViewComponent
+    GameViewComponent,
+    LearnToPlayComponent
     
   ],
   imports: [
